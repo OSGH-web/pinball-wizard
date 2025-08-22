@@ -100,11 +100,13 @@ func update_state() -> void:
 			if input == PaddleInput.PRESS:
 				$AnimationPlayer.play("trigger")
 				state = PaddleState.RISING
+				input = PaddleInput.NONE
 		
 		PaddleState.TRIGGERED:
 			if input == PaddleInput.RELEASE:
 				$AnimationPlayer.play("fall")
 				state = PaddleState.FALLING
+				input = PaddleInput.NONE
 		
 		PaddleState.FALLING:
 			if input == PaddleInput.PRESS:
@@ -114,4 +116,4 @@ func update_state() -> void:
 				$AnimationPlayer.play_section("trigger", start_time)
 				state = PaddleState.RISING
 	
-	input = PaddleInput.NONE
+				input = PaddleInput.NONE
