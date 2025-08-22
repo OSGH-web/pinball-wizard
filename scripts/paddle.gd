@@ -6,7 +6,7 @@ enum PaddleState { IDLE, TRIGGERED, RISING, FALLING }  # Paddle motion phases
 enum PaddleInput { NONE, PRESS, RELEASE }              # Player input events
 
 # --- Constants ---
-const PADDLE_STRENGTH: float = 15
+const PADDLE_STRENGTH: float = 25
 const TRIGGERED_COYOTE_FRAME_MAX: int = 3
 
 # --- Runtime variables ---
