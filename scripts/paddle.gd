@@ -44,8 +44,8 @@ func _physics_process(delta: float) -> void:
 
 func update_debug_labels() -> void:
 	$Label.rotation_degrees = get_perpendicular_angle()
-	$ANGLE.text = str(get_current_paddle_angle())
-	$PERP_ANGLE.text = str(get_perpendicular_angle())
+	$ANGLE.text = "%0.2d" % get_current_paddle_angle()
+	$PERP_ANGLE.text = "%0.2d" % get_perpendicular_angle()
 
 
 func apply_collision_force(ball: RigidBody2D):
