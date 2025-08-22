@@ -1,0 +1,201 @@
+[gd_scene load_steps=15 format=3 uid="uid://bn88swkkd7ayb"]
+
+[ext_resource type="Texture2D" uid="uid://bb2rf14iceea6" path="res://assets/paddle.png" id="1_3xiby"]
+[ext_resource type="Script" uid="uid://dn4the3oq67ss" path="res://scripts/paddle.gd" id="1_y7wee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wfyh"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(0, 0, 33, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sugp2"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(33, 0, 33, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyhfs"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(66, 0, 33, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbgi4"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(99, 0, 33, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tefeu"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(132, 0, 33, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6xl0"]
+atlas = ExtResource("1_3xiby")
+region = Rect2(165, 0, 33, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tipki"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wfyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sugp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyhfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbgi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tefeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6xl0")
+}],
+"loop": true,
+"name": &"trigger",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85g3d"]
+radius = 3.605289
+height = 33.28627
+
+[sub_resource type="Animation" id="Animation_kvcsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nk5r3"]
+resource_name = "fall"
+length = 0.083335005
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.8377580409572782, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pacq5"]
+resource_name = "trigger"
+length = 0.083335005
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.8377580409572782]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjacl"]
+_data = {
+&"RESET": SubResource("Animation_kvcsl"),
+&"fall": SubResource("Animation_nk5r3"),
+&"trigger": SubResource("Animation_pacq5")
+}
+
+[node name="Paddle" type="Node2D"]
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("1_y7wee")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-6.0000005, -11.000001)
+scale = Vector2(1.0000001, 1.0000001)
+sprite_frames = SubResource("SpriteFrames_tipki")
+animation = &"trigger"
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(10.000005, 5.000002)
+rotation = -0.9948377
+shape = SubResource("CapsuleShape2D_85g3d")
+
+[node name="Label" type="Panel" parent="."]
+anchors_preset = -1
+offset_right = 1.0
+offset_bottom = 40.0
+rotation = -2.5307274
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qjacl")
+}
+
+[node name="ANGLE" type="Label" parent="."]
+anchors_preset = -1
+offset_top = 17.0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "-55.0"
+
+[node name="PERP_ANGLE" type="Label" parent="."]
+anchors_preset = -1
+offset_top = 41.0
+offset_right = 47.0
+offset_bottom = 64.0
+text = "-145.0"
