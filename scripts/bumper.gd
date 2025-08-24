@@ -2,6 +2,12 @@
 extends Node2D
 class_name Bumper
 
+const BUMPER_STRENGTH = 10
+
+# derived from the bumper pixel art
+# angle is relative to the UP direction
+const BUMPER_ANGLE = 35
+
 @export var left_bumper = true:
 	set(lb):
 		left_bumper = lb
@@ -11,19 +17,14 @@ class_name Bumper
 		else:
 			scale = Vector2(-1, 1)
 
-const BUMPER_STRENGTH = 10
-
-func _on_active_area_entered(area: Area2D) -> void:
-	print(area)
-	#_apply_collision_force()
 
 func apply_collision_force(ball: RigidBody2D):
 	var direction: Vector2
 
 	if left_bumper:
-		direction = Vector2(1, -1)
+		direction = Vector2.UP.rotated(deg_to_rad(BUMPER_ANGLE))
 	else:
-		direction = Vector2(-1, -1)
+		direction = Vector2.UP.rotated(deg_to_rad(-1 * BUMPER_ANGLE))
 
 	var force = direction * BUMPER_STRENGTH
 
