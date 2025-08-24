@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bn68c8ajnoa4q"]
 
-[ext_resource type="Script" uid="uid://bnx3jrycl4pnd" path="res://scripts/main.gd" id="1_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/paddle.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://pe12kdi80xnp" path="res://scenes/ball.tscn" id="2_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
@@ -14,13 +14,13 @@ script = ExtResource("1_jyhfs")
 [node name="Ball" parent="." instance=ExtResource("2_jyhfs")]
 position = Vector2(144, 256)
 
-[node name="Paddle" parent="." instance=ExtResource("2_0wfyh")]
+[node name="Flipper" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(96.00001, 344.00003)
 
-[node name="Paddle2" parent="." instance=ExtResource("2_0wfyh")]
+[node name="Flipper2" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(160, 344.00003)
 scale = Vector2(-1, 1)
-left_paddle = false
+left_flipper = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(99, -264)
