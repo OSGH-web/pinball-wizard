@@ -99,6 +99,7 @@ func update_state() -> void:
 		PaddleState.IDLE:
 			if input == PaddleInput.PRESS:
 				$AnimationPlayer.play("trigger")
+				$AudioStreamPlayer.play()
 				state = PaddleState.RISING
 				input = PaddleInput.NONE
 		
@@ -114,6 +115,7 @@ func update_state() -> void:
 				var frame_rate = 60.0
 				var start_time = current_frame / frame_rate
 				$AnimationPlayer.play_section("trigger", start_time)
+				$AudioStreamPlayer.play()
 				state = PaddleState.RISING
 	
 				input = PaddleInput.NONE

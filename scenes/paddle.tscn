@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn88swkkd7ayb"]
+[gd_scene load_steps=16 format=3 uid="uid://bn88swkkd7ayb"]
 
-[ext_resource type="Texture2D" uid="uid://bb2rf14iceea6" path="res://assets/paddle.png" id="1_3xiby"]
+[ext_resource type="Texture2D" uid="uid://bb2rf14iceea6" path="res://assets/sprites/paddle.png" id="1_3xiby"]
 [ext_resource type="Script" uid="uid://dn4the3oq67ss" path="res://scripts/paddle.gd" id="1_y7wee"]
+[ext_resource type="AudioStream" uid="uid://b4sjh1hrgr1f4" path="res://assets/audio/woodblock.wav" id="3_mo4dg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wfyh"]
 atlas = ExtResource("1_3xiby")
@@ -191,11 +192,15 @@ anchors_preset = -1
 offset_top = 17.0
 offset_right = 40.0
 offset_bottom = 40.0
-text = "-55.0"
+text = "-55"
 
 [node name="PERP_ANGLE" type="Label" parent="."]
 anchors_preset = -1
 offset_top = 41.0
 offset_right = 47.0
 offset_bottom = 64.0
-text = "-145.0"
+text = "-145"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mo4dg")
+pitch_scale = 2.0

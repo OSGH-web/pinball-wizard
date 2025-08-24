@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://pe12kdi80xnp"]
 
 [ext_resource type="Script" uid="uid://4qc4ejkevh06" path="res://scripts/ball.gd" id="1_cxlvu"]
-[ext_resource type="Texture2D" uid="uid://ttrp0jfcnqv" path="res://assets/pinball_frames.png" id="3_f7cbr"]
+[ext_resource type="Texture2D" uid="uid://ttrp0jfcnqv" path="res://assets/sprites/pinball_frames.png" id="3_f7cbr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sugp2"]
 friction = 0.5
