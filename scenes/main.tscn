@@ -4,52 +4,53 @@
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://pe12kdi80xnp" path="res://scenes/ball.tscn" id="2_jyhfs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
-size = Vector2(41, 21)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sugp2"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(0, 1)
 script = ExtResource("1_jyhfs")
 
 [node name="Ball" parent="." instance=ExtResource("2_jyhfs")]
-position = Vector2(144, 256)
+position = Vector2(324, 191)
 
 [node name="Flipper" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(96.00001, 344.00003)
+position = Vector2(280, 330)
 
 [node name="Flipper2" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(160, 344.00003)
+position = Vector2(360, 330)
 scale = Vector2(-1, 1)
 left_flipper = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(99, -264)
+[node name="GameBorder" type="StaticBody2D" parent="."]
+disable_mode = 1
+physics_material_override = SubResource("PhysicsMaterial_sugp2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(29.125, 276.25)
-scale = Vector2(6.237805, 1.1190476)
-shape = SubResource("RectangleShape2D_tbgi4")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBorder"]
+position = Vector2(192, 0)
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 0, 360, 256, 360, 256, 0)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(99, 144)
+[node name="Outline1" type="Line2D" parent="GameBorder"]
+position = Vector2(192, 0)
+points = PackedVector2Array(256, 0, 0, 0)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(29.125, 276.25)
-scale = Vector2(6.237805, 1.1190476)
-shape = SubResource("RectangleShape2D_tbgi4")
+[node name="Outline2" type="Line2D" parent="GameBorder"]
+position = Vector2(192, 0)
+rotation = 1.5707964
+points = PackedVector2Array(360, -1.5258789e-05, 0, 0)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(99, -264)
+[node name="Outline3" type="Line2D" parent="GameBorder"]
+position = Vector2(448, 0)
+rotation = 1.5707964
+points = PackedVector2Array(360, -1.5258789e-05, 0, 0)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-90.87501, 492.25003)
-scale = Vector2(0.38414642, 19.404762)
-shape = SubResource("RectangleShape2D_tbgi4")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(99, -264)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(149.12497, 492.25006)
-scale = Vector2(0.38414642, 19.404762)
-shape = SubResource("RectangleShape2D_tbgi4")
+[node name="Outline4" type="Line2D" parent="GameBorder"]
+position = Vector2(192, 360)
+points = PackedVector2Array(256, 0, 0, 0)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
