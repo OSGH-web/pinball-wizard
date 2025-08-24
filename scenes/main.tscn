@@ -12,9 +12,6 @@ script = ExtResource("1_jyhfs")
 [node name="Ball" parent="." instance=ExtResource("2_jyhfs")]
 position = Vector2(324, 191)
 
-[node name="Ball2" parent="." instance=ExtResource("2_jyhfs")]
-position = Vector2(284, 191)
-
 [node name="Flipper" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(280, 330)
 
