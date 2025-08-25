@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
-[ext_resource type="FontFile" uid="uid://gwiljxciblr3" path="res://assets/fonts/Bitfantasy.ttf" id="7_o6xl0"]
+[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
