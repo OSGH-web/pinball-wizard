@@ -94,15 +94,15 @@ text = "Mult: x1"
 [node name="Timer" type="Timer" parent="UI"]
 wait_time = 180.0
 
-[node name="CircleBumper" parent="." instance=ExtResource("9_85g3d")]
-position = Vector2(309, 104)
-
 [node name="Killzone" parent="." instance=ExtResource("9_85g3d")]
 position = Vector2(305, 383)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(7, 1)
 shape = SubResource("RectangleShape2D_choun")
+
+[node name="CircleBumper" parent="." instance=ExtResource("10_choun")]
+position = Vector2(312, 89)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
