@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://da7iws7rn34ic"]
+
+[ext_resource type="Script" uid="uid://b3lp8wlfofs6q" path="res://scripts/plunger.gd" id="1_qcbao"]
+[ext_resource type="Texture2D" uid="uid://bditfufxos73q" path="res://assets/sprites/plunger/plunger_sprite_sheet1.png" id="2_1r2yk"]
+[ext_resource type="Texture2D" uid="uid://3v4pt6ssujfq" path="res://assets/sprites/plunger/plunger_sprite_sheet2.png" id="3_kegrl"]
+[ext_resource type="Texture2D" uid="uid://vcutuuc7c8y8" path="res://assets/sprites/plunger/plunger_sprite_sheet3.png" id="4_tsebl"]
+[ext_resource type="Texture2D" uid="uid://bn2bv0fhjfav8" path="res://assets/sprites/plunger/plunger_sprite_sheet4.png" id="5_uj50b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj50b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1r2yk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kegrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tsebl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uj50b")
+}],
+"loop": true,
+"name": &"lower",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_qcbao"]
+resource_name = "Lower"
+length = 0.333335
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlungerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 18), Vector2(-3, 30), Vector2(-3, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_jftkt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlungerSprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterBody2D/CollisionPolygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 18)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kbq5m"]
+_data = {
+&"Lower": SubResource("Animation_qcbao"),
+&"RESET": SubResource("Animation_jftkt")
+}
+
+[node name="Plunger" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_qcbao")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+disable_mode = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+position = Vector2(-3, 18)
+polygon = PackedVector2Array(0, 0, 0, -3, 1, -3, 1, -28, -2, -30, -2, -33, 1, -36, 5, -36, 8, -33, 8, -30, 5, -28, 5, -3, 6, -3, 6, 0)
+
+[node name="PlungerSprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uj50b")
+animation = &"lower"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kbq5m")
+}
