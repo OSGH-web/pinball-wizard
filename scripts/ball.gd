@@ -80,4 +80,5 @@ func _input(event):
 			
 func die():
 	modify_score.emit(death_penalty, true)
+	self.queue_free()
 	
