@@ -4,3 +4,5 @@
 .gdscript
 *.import
 *.uid
+
+.DS_Store
