@@ -8,8 +8,6 @@ var buttons = []
 signal increment_multiplier
 
 func _ready():
-	# debug
-	$RolloverButton.set_rolloverbutton()
 	buttons = [$RolloverButton, $RolloverButton2, $RolloverButton3]
 
 	for button: RolloverButton in buttons:
