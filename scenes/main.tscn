@@ -31,6 +31,7 @@ position = Vector2(248, 284)
 [node name="RightBumper" parent="." instance=ExtResource("6_tefeu")]
 position = Vector2(392, 284)
 scale = Vector2(-1, 1)
+left_bumper = false
 
 [node name="Plunger" parent="." instance=ExtResource("5_tbgi4")]
 position = Vector2(432, 338)
