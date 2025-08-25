@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=13 format=4 uid="uid://bn68c8ajnoa4q"]
 
-[ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://bnx3jrycl4pnd" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://pe12kdi80xnp" path="res://scenes/ball.tscn" id="2_jyhfs"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
-[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://dcmdeefrkityr" path="res://scenes/killzone.tscn" id="9_85g3d"]
+[ext_resource type="FontFile" uid="uid://b86m1rdbbrrm7" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cr2l0w57gwgbl" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
