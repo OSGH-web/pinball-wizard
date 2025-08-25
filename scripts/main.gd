@@ -1,28 +1,53 @@
 extends Node2D
 var timer: Timer
 # The amount of time the timer will start with in milliseconds
-var countdown_time := 180
+var countdown_time :=  180
 var game_started := false
-var score = 0
-var multiplier = 1
+var ball_scene = preload("res://scenes/ball.tscn")
+var score := 0:
+	set(new_score):
+		if new_score < 0:
+			score = 0
+		else:
+			score = new_score
+var multiplier = 1:
+	set(new_multiplier):
+		if new_multiplier < 1:
+			multiplier = 1
+		else:
+			multiplier = new_multiplier
 
 
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	$Plunger.connect("game_started_signal", _on_game_started_signal)
-	
+	$Ball.connect("modify_score", _modify_score)
+
+
+func _create_new_ball(x: float, y: float):
+	var ball = ball_scene.instantiate()
+	ball.position.x = x
+	ball.position.y = y
+	self.add_child(ball)
+
 	
 func _on_game_started_signal():
 	_start_countdown(countdown_time)
 	
 
-func _modify_score(score_value):
+func _modify_score(score_value: int, _new_ball: bool = false):
+	# Might need to change - right now the multiplier will also multipy the death penalty. 
 	score += score_value * multiplier
 	%UI/Score.text = str(score)
+	if _new_ball:
+		_modify_multiplier(-1)
+		_create_new_ball(436.0, 301.25)
 	
-func _increment_multiplier():
-	multiplier += 1
+	
+func _modify_multiplier(mult_value: int):
+	multiplier += mult_value
 	%UI/Multiplier.text = "Mult: x%d" % multiplier
+	
 	
 func _process(_delta: float) -> void:
 	if game_started:
@@ -50,7 +75,7 @@ func format_time(seconds: int) -> String:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Ball:
-		node.connect("add_to_score", _modify_score)
+		node.connect("modify_score", _modify_score)
 
 	if node is TripleRolloverButtonGroup:
-		node.connect("increment_multiplier", _increment_multiplier)
+		node.connect("modify_multiplier", _modify_multiplier)

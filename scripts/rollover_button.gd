@@ -16,7 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 		set_rolloverbutton()
 
 		if body is Ball:
-			body.add_to_score.emit(score_value)
+			body.modify_score.emit(score_value)
 			button_is_set.emit()
 
 

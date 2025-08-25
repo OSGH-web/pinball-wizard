@@ -5,7 +5,7 @@ class_name TripleRolloverButtonGroup
 
 var buttons = []
 
-signal increment_multiplier
+signal modify_multiplier
 
 func _ready():
 	buttons = [$RolloverButton, $RolloverButton2, $RolloverButton3]
@@ -21,7 +21,7 @@ func check_if_all_buttons_are_set():
 			break
 
 	if all_set:
-		increment_multiplier.emit()
+		modify_multiplier.emit(1)
 		reset_all_buttons()
 
 func reset_all_buttons():
