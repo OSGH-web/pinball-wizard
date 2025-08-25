@@ -2,7 +2,7 @@ extends StaticBody2D
 class_name CircleBumper
 
 
-const score = 500
+const score_value = 750
 
 const CIRCLE_BUMPER_STRENGTH = 10
 
