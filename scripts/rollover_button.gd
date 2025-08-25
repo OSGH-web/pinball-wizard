@@ -16,8 +16,11 @@ func _on_body_entered(body: Node2D) -> void:
 func reset_rolloverbutton():
 	state = RolloverButtonState.UNSET
 	$AnimatedSprite2D.frame = 0
-	
-	
+
+
 func set_rolloverbutton():
+	if state == RolloverButtonState.SET:
+		return
+
 	state = RolloverButtonState.SET
 	$AnimatedSprite2D.frame = 1
