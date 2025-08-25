@@ -34,3 +34,6 @@ func apply_collision_force(ball: RigidBody2D):
 
 
 	ball.apply_central_impulse(force)
+
+	$AnimatedSprite2D.frame = 0
+	$AnimatedSprite2D.play()
