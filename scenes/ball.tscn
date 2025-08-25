@@ -8,7 +8,7 @@ friction = 0.5
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
-radius = 8.0
+radius = 6.75
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dx81"]
 atlas = ExtResource("3_f7cbr")
@@ -140,6 +140,7 @@ max_contacts_reported = 1
 script = ExtResource("1_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
 shape = SubResource("CircleShape2D_jyhfs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
