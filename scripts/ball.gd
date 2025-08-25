@@ -19,6 +19,11 @@ func _on_body_entered(body: Node) -> void:
 	elif body.get_parent() is Bumper && body.name == "Active":
 		body.get_parent().apply_collision_force(self)
 		add_to_score.emit(Bumper.score_value)
+	elif body is CircleBumper:
+		body.apply_collision_force(self)
+		add_to_score.emit(CircleBumper.score_value)
+
+
 	elif body.get_parent() is Plunger:
 		body.get_parent().apply_collision_force(self)
 
