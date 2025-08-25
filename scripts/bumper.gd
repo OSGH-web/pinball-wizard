@@ -1,0 +1,31 @@
+@tool
+extends Node2D
+class_name Bumper
+
+const BUMPER_STRENGTH = 10
+
+# derived from the bumper pixel art
+# angle is relative to the UP direction
+const BUMPER_ANGLE = 35
+
+@export var left_bumper = true:
+	set(lb):
+		left_bumper = lb
+
+		if left_bumper:
+			scale = Vector2(1, 1)
+		else:
+			scale = Vector2(-1, 1)
+
+
+func apply_collision_force(ball: RigidBody2D):
+	var direction: Vector2
+
+	if left_bumper:
+		direction = Vector2.UP.rotated(deg_to_rad(BUMPER_ANGLE))
+	else:
+		direction = Vector2.UP.rotated(deg_to_rad(-1 * BUMPER_ANGLE))
+
+	var force = direction * BUMPER_STRENGTH
+
+	ball.apply_central_impulse(force)
