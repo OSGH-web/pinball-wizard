@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Ball
 
 const N_ANIMATION_FRAMES = 16
 const BIN_SIZE = 360/N_ANIMATION_FRAMES
@@ -9,7 +10,7 @@ var debug_final_click_position := Vector2.ZERO
 var debug_velocity_reset_requested := false
 var debug_update_velocity_requested := false
 const debug_throw_strength_multiplier := 2.5
-var score = 0
+signal add_to_score
 
 
 func _on_body_entered(body: Node) -> void:
@@ -23,6 +24,8 @@ func _on_body_entered(body: Node) -> void:
 		body.apply_collision_force(self)
 		score += CircleBumper.score
 		%UI/Score.text = str(score)
+		add_to_score.emit(Bumper.score_value)
+
 	elif body.get_parent() is Plunger:
 		body.get_parent().apply_collision_force(self)
 
