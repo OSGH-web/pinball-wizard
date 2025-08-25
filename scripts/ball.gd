@@ -13,9 +13,6 @@ const debug_throw_strength_multiplier := 2.5
 signal add_to_score
 
 
-func _ready():
-	add_to_group("Ball")
-
 func _on_body_entered(body: Node) -> void:
 	if body.get_parent() is Flipper:
 		body.get_parent().apply_collision_force(self)

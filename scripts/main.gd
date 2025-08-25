@@ -9,8 +9,7 @@ var score = 0
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	$Plunger.connect("game_started_signal", _on_game_started_signal)
-	for ball in get_tree().get_nodes_in_group("Ball"):
-		ball.connect("add_to_score", _modify_score)
+	$Ball.connect("add_to_score", _modify_score)
 	
 	
 func _on_game_started_signal():
