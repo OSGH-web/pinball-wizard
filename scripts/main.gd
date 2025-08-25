@@ -3,13 +3,18 @@ var timer: Timer
 # The amount of time the timer will start with in milliseconds
 var countdown_time := 180
 var game_started := false
-var score = 0
+var score = 0:
+	set(new_score):
+		if new_score < 0:
+			score = 0
+		else:
+			score = new_score
 
 
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	$Plunger.connect("game_started_signal", _on_game_started_signal)
-	$Ball.connect("add_to_score", _modify_score)
+	$Ball.connect("modify_score", _modify_score)
 	
 	
 func _on_game_started_signal():
@@ -47,4 +52,4 @@ func format_time(seconds: int) -> String:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Ball:
-		node.connect("add_to_score", _modify_score)
+		node.connect("modify_score", _modify_score)

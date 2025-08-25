@@ -9,8 +9,10 @@ var debug_initial_click_position := Vector2.ZERO
 var debug_final_click_position := Vector2.ZERO
 var debug_velocity_reset_requested := false
 var debug_update_velocity_requested := false
+# This should probably go up as the game goes on.
+var death_penalty = -1000
 const debug_throw_strength_multiplier := 2.5
-signal add_to_score
+signal modify_score
 
 
 func _on_body_entered(body: Node) -> void:
@@ -18,10 +20,10 @@ func _on_body_entered(body: Node) -> void:
 		body.get_parent().apply_collision_force(self)
 	elif body.get_parent() is Bumper && body.name == "Active":
 		body.get_parent().apply_collision_force(self)
-		add_to_score.emit(Bumper.score_value)
+		modify_score.emit(Bumper.score_value)
 	elif body is CircleBumper:
 		body.apply_collision_force(self)
-		add_to_score.emit(CircleBumper.score_value)
+		modify_score.emit(CircleBumper.score_value)
 
 
 	elif body.get_parent() is Plunger:
@@ -74,3 +76,8 @@ func _input(event):
 		else:
 			debug_final_click_position = event.position
 			debug_update_velocity_requested = true
+			
+			
+func die():
+	# Spawn another ball above the plunger
+	modify_score.emit(death_penalty)
