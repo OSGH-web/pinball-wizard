@@ -59,10 +59,8 @@ unique_name_in_owner = true
 
 [node name="Panel" type="Panel" parent="UI"]
 z_index = -1
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 648.0
-offset_bottom = 368.0
+offset_right = 640.0
+offset_bottom = 360.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
 
 [node name="TimerLabel" type="Label" parent="UI"]
