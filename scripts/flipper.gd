@@ -6,7 +6,7 @@ enum FlipperState { IDLE, TRIGGERED, RISING, FALLING }  # Flipper motion phases
 enum FlipperInput { NONE, PRESS, RELEASE }              # Player input events
 
 # --- Constants ---
-const FLIPPER_STRENGTH: float = 20
+@export var FLIPPER_STRENGTH: float = 30
 const TRIGGERED_COYOTE_FRAME_MAX: int = 3
 
 # --- Runtime variables ---

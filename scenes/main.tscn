@@ -21,10 +21,12 @@ position = Vector2(272, 44)
 
 [node name="Ball" parent="." instance=ExtResource("2_jyhfs")]
 position = Vector2(304, 191)
+gravity_scale = 0.25
 
 [node name="Flipper" parent="." instance=ExtResource("2_0wfyh")]
 z_index = 1
 position = Vector2(276.00003, 326.00003)
+FLIPPER_STRENGTH = 35.0
 
 [node name="Flipper2" parent="." instance=ExtResource("2_0wfyh")]
 z_index = 1
