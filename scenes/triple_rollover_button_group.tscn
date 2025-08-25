@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr2l0w57gwgbl"]
 
 [ext_resource type="Script" uid="uid://c6kaoja6asx2q" path="res://scripts/triple_rollover_button_group.gd" id="1_6ivli"]
-[ext_resource type="PackedScene" path="res://scenes/rollover_button.tscn" id="1_qiauy"]
+[ext_resource type="PackedScene" uid="uid://cjanv1jw70dmm" path="res://scenes/rollover_button.tscn" id="1_qiauy"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="2_6ivli"]
 
 [node name="TripleRolloverButtonGroup" type="Node2D"]
