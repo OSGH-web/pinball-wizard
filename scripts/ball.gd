@@ -19,6 +19,10 @@ func _on_body_entered(body: Node) -> void:
 		body.get_parent().apply_collision_force(self)
 		score += 100
 		%UI/Score.text = str(score)
+	elif body is CircleBumper:
+		body.apply_collision_force(self)
+		score += CircleBumper.score
+		%UI/Score.text = str(score)
 	elif body.get_parent() is Plunger:
 		body.get_parent().apply_collision_force(self)
 
