@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cjanv1jw70dmm"]
 
-[ext_resource type="Script" uid="uid://bn0k8gi0mf125" path="res://scripts/rollover_button.gd" id="1_djyae"]
-[ext_resource type="Texture2D" uid="uid://b55foffbg8tad" path="res://assets/sprites/rollover_button.png" id="2_rvvfu"]
+[ext_resource type="Script" uid="uid://b6oky1v3erxrn" path="res://scripts/rollover_button.gd" id="1_djyae"]
+[ext_resource type="Texture2D" uid="uid://dwkc01imobsol" path="res://assets/sprites/rollover_button.png" id="2_rvvfu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
 atlas = ExtResource("2_rvvfu")
