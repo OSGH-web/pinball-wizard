@@ -4,7 +4,7 @@ class_name CircleBumper
 
 const score_value = 750
 
-const CIRCLE_BUMPER_STRENGTH = 10
+const CIRCLE_BUMPER_STRENGTH = 15
 
 func apply_collision_force(ball: RigidBody2D):
 	var direction: Vector2
@@ -14,6 +14,6 @@ func apply_collision_force(ball: RigidBody2D):
 	var force = direction * CIRCLE_BUMPER_STRENGTH
 
 	ball.apply_central_impulse(force)
-	
+
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.play()
