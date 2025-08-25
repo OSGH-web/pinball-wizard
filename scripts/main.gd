@@ -10,6 +10,7 @@ var score := 0:
 			score = 0
 		else:
 			score = new_score
+var multiplier = 1
 
 
 func _ready():
@@ -30,11 +31,14 @@ func _on_game_started_signal():
 	
 
 func _modify_score(score_value: int, _new_ball: bool = false):
-	score += score_value
+	score += score_value * multiplier
 	%UI/Score.text = str(score)
 	if _new_ball:
 		_create_new_ball(436.0, 301.25)
 	
+func _increment_multiplier():
+	multiplier += 1
+	%UI/Multiplier.text = "Mult: x%d" % multiplier
 	
 func _process(_delta: float) -> void:
 	if game_started:
@@ -63,3 +67,6 @@ func format_time(seconds: int) -> String:
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Ball:
 		node.connect("modify_score", _modify_score)
+
+	if node is TripleRolloverButtonGroup:
+		node.connect("increment_multiplier", _increment_multiplier)

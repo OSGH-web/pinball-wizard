@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr2l0w57gwgbl"]
+
+[ext_resource type="Script" uid="uid://c6kaoja6asx2q" path="res://scripts/triple_rollover_button_group.gd" id="1_6ivli"]
+[ext_resource type="PackedScene" uid="uid://cjanv1jw70dmm" path="res://scenes/rollover_button.tscn" id="1_qiauy"]
+[ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="2_6ivli"]
+
+[node name="TripleRolloverButtonGroup" type="Node2D"]
+script = ExtResource("1_6ivli")
+
+[node name="RolloverButton" parent="." instance=ExtResource("1_qiauy")]
+position = Vector2(9, 0)
+
+[node name="RolloverButton2" parent="." instance=ExtResource("1_qiauy")]
+position = Vector2(33, 0)
+
+[node name="RolloverButton3" parent="." instance=ExtResource("1_qiauy")]
+position = Vector2(57, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0)
+tile_set = ExtResource("2_6ivli")
