@@ -4,6 +4,7 @@ var timer: Timer
 var countdown_time := 180
 var game_started := false
 var score = 0
+var multiplier = 1
 
 
 func _ready():
@@ -16,9 +17,12 @@ func _on_game_started_signal():
 	
 
 func _modify_score(score_value):
-	score += score_value
+	score += score_value * multiplier
 	%UI/Score.text = str(score)
 	
+func _increment_multiplier():
+	multiplier += 1
+	%UI/Multiplier.text = "Mult: x%d" % multiplier
 	
 func _process(_delta: float) -> void:
 	if game_started:
@@ -47,3 +51,6 @@ func format_time(seconds: int) -> String:
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Ball:
 		node.connect("add_to_score", _modify_score)
+
+	if node is TripleRolloverButtonGroup:
+		node.connect("increment_multiplier", _increment_multiplier)
