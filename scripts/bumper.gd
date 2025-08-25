@@ -3,6 +3,7 @@ extends Node2D
 class_name Bumper
 
 const BUMPER_STRENGTH = 10
+const score_value = 500
 
 # derived from the bumper pixel art
 # angle is relative to the UP direction
@@ -29,3 +30,4 @@ func apply_collision_force(ball: RigidBody2D):
 	var force = direction * BUMPER_STRENGTH
 
 	ball.apply_central_impulse(force)
+	

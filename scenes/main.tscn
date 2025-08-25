@@ -79,4 +79,5 @@ z_index = -1
 position = Vector2(320, 144)
 texture = ExtResource("8_tipki")
 
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
