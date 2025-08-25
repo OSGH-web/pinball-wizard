@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://yy4kt2x5ge2"]
+
+[ext_resource type="Texture2D" uid="uid://x2tyn0bquw5i" path="res://assets/sprites/circle_bumper.png" id="1_5x8gv"]
+[ext_resource type="Script" uid="uid://b7j57vi3bft4" path="res://scripts/circle_bumper.gd" id="1_w8rip"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tipki"]
+radius = 11.0
+height = 25.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8rip"]
+atlas = ExtResource("1_5x8gv")
+region = Rect2(27, 0, 27, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x8gv"]
+atlas = ExtResource("1_5x8gv")
+region = Rect2(0, 0, 27, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j84np"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8rip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x8gv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CircleBumper" type="StaticBody2D"]
+script = ExtResource("1_w8rip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tipki")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j84np")
+frame = 1
