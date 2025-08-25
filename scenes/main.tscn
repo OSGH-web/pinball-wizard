@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=9 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
@@ -6,11 +6,12 @@
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
+[ext_resource type="FontFile" uid="uid://gwiljxciblr3" path="res://assets/fonts/Bitfantasy.ttf" id="7_o6xl0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="GameManager" type="Node2D"]
 script = ExtResource("1_jyhfs")
 
 [node name="Ball" parent="." instance=ExtResource("2_jyhfs")]
@@ -42,9 +43,32 @@ position = Vector2(432, 338)
 scale = Vector2(1, 1)
 
 [node name="UI" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Panel" type="Panel" parent="UI"]
 z_index = -1
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="TimerLabel" type="Label" parent="UI"]
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("7_o6xl0")
+theme_override_font_sizes/font_size = 48
+text = "3:00"
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 464.0
+offset_top = 16.0
+offset_right = 644.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("7_o6xl0")
+theme_override_font_sizes/font_size = 48
+
+[node name="Timer" type="Timer" parent="UI"]
+wait_time = 180.0
+
+[connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]

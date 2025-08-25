@@ -10,6 +10,9 @@ enum PlungerInput { NONE, PRESS, RELEASE }
 var state = PlungerState.IDLE
 var input := PlungerInput.NONE
 
+# The game starts upon the first plunger activation.
+var game_started = false
+signal game_started_signal
 
 func apply_collision_force(ball: RigidBody2D):
 	if state == PlungerState.RISING:
@@ -20,6 +23,9 @@ func apply_collision_force(ball: RigidBody2D):
 func _input(event):
 	if event.is_action_pressed("lower_plunger"):
 		input = PlungerInput.PRESS
+		if game_started == false:
+			game_started = true
+			game_started_signal.emit()
 	elif event.is_action_released("lower_plunger"):
 		input = PlungerInput.RELEASE
 
