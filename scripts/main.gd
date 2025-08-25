@@ -24,7 +24,6 @@ var multiplier = 1:
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	$Plunger.connect("game_started_signal", _on_game_started_signal)
-	$Ball.connect("modify_score", _modify_score)
 
 
 func _create_new_ball():
