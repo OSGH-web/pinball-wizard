@@ -33,5 +33,5 @@ position = Vector2(392, 284)
 scale = Vector2(-1, 1)
 
 [node name="Plunger" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(432, 320)
-
+position = Vector2(432, 338)
+scale = Vector2(1, 1)
