@@ -14,6 +14,8 @@ const debug_throw_strength_multiplier := 2.5
 func _on_body_entered(body: Node) -> void:
 	if body.get_parent() is Flipper:
 		body.get_parent().apply_collision_force(self)
+	elif body.get_parent() is Plunger:
+		body.get_parent().apply_collision_force(self)
 
 func _physics_process(delta: float) -> void:
 	_update_animation_frame()
