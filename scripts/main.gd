@@ -1,9 +1,10 @@
 extends Node2D
 var timer: Timer
 # The amount of time the timer will start with in milliseconds
-var countdown_time := 180
+var countdown_time :=  180
 var game_started := false
-var score = 0:
+var ball_scene = preload("res://scenes/ball.tscn")
+var score := 0:
 	set(new_score):
 		if new_score < 0:
 			score = 0
@@ -15,15 +16,24 @@ func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	$Plunger.connect("game_started_signal", _on_game_started_signal)
 	$Ball.connect("modify_score", _modify_score)
-	
+
+
+func _create_new_ball(x: float, y: float):
+	var ball = ball_scene.instantiate()
+	ball.position.x = x
+	ball.position.y = y
+	self.add_child(ball)
+
 	
 func _on_game_started_signal():
 	_start_countdown(countdown_time)
 	
 
-func _modify_score(score_value):
+func _modify_score(score_value: int, _new_ball: bool = false):
 	score += score_value
 	%UI/Score.text = str(score)
+	if _new_ball:
+		_create_new_ball(436.0, 301.25)
 	
 	
 func _process(_delta: float) -> void:

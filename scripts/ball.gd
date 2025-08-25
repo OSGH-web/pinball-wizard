@@ -13,7 +13,7 @@ var debug_update_velocity_requested := false
 var death_penalty = -1000
 const debug_throw_strength_multiplier := 2.5
 signal modify_score
-
+	
 
 func _on_body_entered(body: Node) -> void:
 	if body.get_parent() is Flipper:
@@ -79,5 +79,5 @@ func _input(event):
 			
 			
 func die():
-	# Spawn another ball above the plunger
-	modify_score.emit(death_penalty)
+	modify_score.emit(death_penalty, true)
+	
