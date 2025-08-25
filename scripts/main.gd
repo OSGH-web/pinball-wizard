@@ -1,4 +1,7 @@
 extends Node2D
+
+const NEW_BALL_POSITION = Vector2(436.0, 301.25)
+
 var timer: Timer
 # The amount of time the timer will start with in milliseconds
 var countdown_time :=  180
@@ -24,10 +27,9 @@ func _ready():
 	$Ball.connect("modify_score", _modify_score)
 
 
-func _create_new_ball(x: float, y: float):
+func _create_new_ball():
 	var ball = ball_scene.instantiate()
-	ball.position.x = x
-	ball.position.y = y
+	ball.position = NEW_BALL_POSITION
 	self.add_child(ball)
 
 	
@@ -41,7 +43,7 @@ func _modify_score(score_value: int, _new_ball: bool = false):
 	%UI/Score.text = str(score)
 	if _new_ball:
 		_modify_multiplier(-1)
-		_create_new_ball(436.0, 301.25)
+		call_deferred("_create_new_ball")
 	
 	
 func _modify_multiplier(mult_value: int):
