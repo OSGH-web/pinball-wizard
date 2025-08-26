@@ -63,9 +63,9 @@ func apply_collision_force(ball: RigidBody2D):
 
 func get_current_flipper_angle():
 	if not left_flipper:
-		return 55 - $FlipperBody.rotation_degrees
+		return 55 - $FlipperBodies.rotation_degrees
 	else:
-		return $FlipperBody.rotation_degrees - 55
+		return $FlipperBodies.rotation_degrees - 55
 
 func get_perpendicular_angle():
 	var current_flipper_angle = get_current_flipper_angle()

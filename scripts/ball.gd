@@ -16,8 +16,8 @@ signal modify_score
 	
 
 func _on_body_entered(body: Node) -> void:
-	if body.get_parent() is Flipper:
-		body.get_parent().apply_collision_force(self)
+	if body.name == "FlipperBodyActive" && body.get_parent().get_parent() is Flipper:
+		body.get_parent().get_parent().apply_collision_force(self)
 	elif body.get_parent() is Bumper && body.name == "Active":
 		body.get_parent().apply_collision_force(self)
 		modify_score.emit(Bumper.score_value)
