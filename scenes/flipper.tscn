@@ -177,6 +177,7 @@ rotation = -0.9948377
 shape = SubResource("CapsuleShape2D_85g3d")
 
 [node name="Label" type="Panel" parent="."]
+visible = false
 offset_right = 1.0
 offset_bottom = 40.0
 rotation = -2.5307274
@@ -187,12 +188,14 @@ libraries = {
 }
 
 [node name="ANGLE" type="Label" parent="."]
+visible = false
 offset_top = 17.0
 offset_right = 40.0
 offset_bottom = 40.0
 text = "-55"
 
 [node name="PERP_ANGLE" type="Label" parent="."]
+visible = false
 offset_top = 41.0
 offset_right = 47.0
 offset_bottom = 64.0

@@ -87,9 +87,9 @@ func _input(event):
 
 func _get_input_signal():
 	if left_flipper:
-		return "ui_left"
+		return "left_flipper"
 	else:
-		return "ui_right"
+		return "right_flipper"
 		
 func update_state() -> void:
 	if input == FlipperInput.NONE:
