@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://da7iws7rn34ic"]
 
-[ext_resource type="Script" uid="uid://b3lp8wlfofs6q" path="res://scripts/plunger.gd" id="1_qcbao"]
+[ext_resource type="Script" uid="uid://cjeynbd2h4tfv" path="res://scripts/plunger.gd" id="1_qcbao"]
 [ext_resource type="Texture2D" uid="uid://bditfufxos73q" path="res://assets/sprites/plunger/plunger_sprite_sheet1.png" id="2_1r2yk"]
 [ext_resource type="Texture2D" uid="uid://3v4pt6ssujfq" path="res://assets/sprites/plunger/plunger_sprite_sheet2.png" id="3_kegrl"]
 [ext_resource type="Texture2D" uid="uid://vcutuuc7c8y8" path="res://assets/sprites/plunger/plunger_sprite_sheet3.png" id="4_tsebl"]
 [ext_resource type="Texture2D" uid="uid://bn2bv0fhjfav8" path="res://assets/sprites/plunger/plunger_sprite_sheet4.png" id="5_uj50b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1r2yk"]
-bounce = 0.5
+bounce = 0.4
 absorbent = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj50b"]
