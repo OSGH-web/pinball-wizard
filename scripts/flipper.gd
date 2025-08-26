@@ -79,8 +79,7 @@ func get_perpendicular_angle():
 	# Flip perpendicular depending on left/right side
 	var perpendicular_angle: float = current_flipper_angle - 90
 	if not left_flipper:
-		perpendicular_angle *= -1
-		perpendicular_angle += 180
+		perpendicular_angle = current_flipper_angle + 90
 		
 	return perpendicular_angle
 
