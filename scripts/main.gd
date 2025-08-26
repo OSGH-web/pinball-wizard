@@ -28,7 +28,7 @@ func _create_new_ball(x: float, y: float):
 	var ball = ball_scene.instantiate()
 	ball.position.x = x
 	ball.position.y = y
-	self.add_child(ball)
+	$Shake_Layer/Balls.add_child(ball)
 
 	
 func _on_game_started_signal():

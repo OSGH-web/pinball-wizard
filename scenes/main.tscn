@@ -100,10 +100,13 @@ position = Vector2(309, 104)
 position = Vector2(305, 391)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shake_Layer/Killzone"]
-position = Vector2(7, 1)
+position = Vector2(7, -7)
 shape = SubResource("RectangleShape2D_choun")
 
-[node name="Ball" parent="Shake_Layer" instance=ExtResource("2_jyhfs")]
+[node name="Balls" type="Node2D" parent="Shake_Layer"]
+unique_name_in_owner = true
+
+[node name="Ball" parent="Shake_Layer/Balls" instance=ExtResource("2_jyhfs")]
 unique_name_in_owner = true
 z_index = 10
 position = Vector2(436, 301.25)
