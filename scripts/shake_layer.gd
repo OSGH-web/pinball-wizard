@@ -4,13 +4,15 @@ var rng := RandomNumberGenerator.new()
 const SHAKE_STRENGTH = 4
 
 func _input(event):
-	if event.is_action_pressed("shake_left"):
-		shake_screen(true)
-	elif event.is_action_pressed("shake_right"):
-		shake_screen(false)
+	if $ShakeCooldown.is_stopped():
+		if event.is_action_pressed("shake_left"):
+			shake_screen(true)
+		elif event.is_action_pressed("shake_right"):
+			shake_screen(false)
 
 
 func shake_screen(is_left: bool, amount := 10.0, duration := 0.25):
+	$ShakeCooldown.start()
 	var tween := create_tween()
 	if is_left:
 		var off := Vector2(
