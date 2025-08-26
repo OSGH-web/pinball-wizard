@@ -1,7 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgaqkaaebb2t2"]
+[gd_scene load_steps=7 format=3 uid="uid://bgaqkaaebb2t2"]
 
 [ext_resource type="Script" uid="uid://j2ibpvnqajhb" path="res://scripts/bumper.gd" id="1_63qnk"]
 [ext_resource type="Texture2D" uid="uid://2fbmr2s6vbgy" path="res://assets/sprites/left_bumper.png" id="1_y1o0u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c24v7"]
+atlas = ExtResource("1_y1o0u")
+region = Rect2(24, 0, 24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63qnk"]
+atlas = ExtResource("1_y1o0u")
+region = Rect2(0, 0, 24, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xqsws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c24v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63qnk")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63qnk"]
 radius = 1.0
@@ -10,8 +32,9 @@ height = 34.0
 [node name="Bumper" type="Node2D"]
 script = ExtResource("1_63qnk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_y1o0u")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xqsws")
+frame = 1
 centered = false
 
 [node name="Passive" type="StaticBody2D" parent="."]

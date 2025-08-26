@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=14 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
 [ext_resource type="PackedScene" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://dcmdeefrkityr" path="res://scenes/killzone.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
@@ -93,9 +94,6 @@ text = "Mult: x1"
 [node name="Timer" type="Timer" parent="Shake_Layer/UI"]
 wait_time = 180.0
 
-[node name="CircleBumper" parent="Shake_Layer" instance=ExtResource("9_85g3d")]
-position = Vector2(309, 104)
-
 [node name="Killzone" parent="Shake_Layer" instance=ExtResource("9_85g3d")]
 position = Vector2(305, 391)
 
@@ -112,5 +110,8 @@ z_index = 10
 position = Vector2(436, 301.25)
 rotation = 0.0
 
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[node name="CircleBumper" parent="Shake_Layer" instance=ExtResource("10_choun")]
+position = Vector2(311, 112)
+
+[connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
 [connection signal="timeout" from="Shake_Layer/UI/Timer" to="." method="_on_timer_timeout"]

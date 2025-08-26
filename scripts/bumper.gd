@@ -29,4 +29,11 @@ func apply_collision_force(ball: RigidBody2D):
 
 	var force = direction * BUMPER_STRENGTH
 
+	var variance_factor = randf_range(0.90, 1.10)
+	force *= variance_factor
+
+
 	ball.apply_central_impulse(force)
+
+	$AnimatedSprite2D.frame = 0
+	$AnimatedSprite2D.play()
