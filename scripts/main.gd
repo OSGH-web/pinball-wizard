@@ -24,6 +24,10 @@ var multiplier = 1:
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
+	%TargetBank.connect("add_time", _add_time)
+	%TargetBank.connect("add_score_bonus", _modify_score)
+	%TargetBank2.connect("add_time", _add_time)
+	%TargetBank2.connect("add_score_bonus", _modify_score)
 	_create_new_ball()
 
 
@@ -37,7 +41,12 @@ func _create_new_ball():
 func _on_game_started_signal():
 	_start_countdown(countdown_time)
 	
-
+	
+func _add_time(time):
+	%UI/Timer.set_wait_time(%UI/Timer.time_left + time)
+	%UI/Timer.start()
+	
+	
 func _modify_score(score_value: int, _new_ball: bool = false):
 	# Might need to change - right now the multiplier will also multipy the death penalty. 
 	score += score_value * multiplier

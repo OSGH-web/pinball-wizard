@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=14 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://dcmdeefrkityr" path="res://scenes/killzone.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://cu0pj1s6s7ymw" path="res://scenes/target_bank.tscn" id="11_ya4ey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
@@ -109,6 +110,15 @@ position = Vector2(311, 112)
 [node name="ShakeCooldown" type="Timer" parent="Shake_Layer"]
 wait_time = 1.4999999999999998
 one_shot = true
+
+[node name="TargetBank" parent="Shake_Layer" instance=ExtResource("11_ya4ey")]
+unique_name_in_owner = true
+position = Vector2(351, 124)
+
+[node name="TargetBank2" parent="Shake_Layer" instance=ExtResource("11_ya4ey")]
+unique_name_in_owner = true
+position = Vector2(276, 124)
+scale = Vector2(-1, 1)
 
 [connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
 [connection signal="timeout" from="Shake_Layer/UI/Timer" to="." method="_on_timer_timeout"]

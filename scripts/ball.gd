@@ -29,6 +29,11 @@ func _on_body_entered(body: Node) -> void:
 	elif body is CircleBumper:
 		body.apply_collision_force(self)
 		modify_score.emit(CircleBumper.score_value)
+	elif body is Target:
+		if body.state == Target.TargetState.RAISED:
+			body.lower_target()
+			modify_score.emit(body.score_value)
+			body.target_is_hit.emit()
 
 
 	elif body.get_parent() is Plunger:
