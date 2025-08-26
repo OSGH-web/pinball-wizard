@@ -6,7 +6,7 @@ enum FlipperState { IDLE, TRIGGERED, RISING, FALLING }  # Flipper motion phases
 enum FlipperInput { NONE, PRESS, RELEASE }              # Player input events
 
 # --- Constants ---
-const FLIPPER_STRENGTH: float = 50 # the maximum force the flipper can exert
+const FLIPPER_STRENGTH: float = 30 # the maximum force the flipper can exert
 const TRIGGERED_COYOTE_FRAME_MAX: int = 3
 const FLIPPER_LENGTH: int = 24 # approximate length from axle to tip of flipper
 
