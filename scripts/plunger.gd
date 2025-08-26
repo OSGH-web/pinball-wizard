@@ -1,7 +1,7 @@
 extends Node2D
 class_name Plunger
 
-const PLUNGER_STRENGTH = 20
+const PLUNGER_STRENGTH = 30
 
 # Called when the node enters the scene tree for the first time.
 enum PlungerState { RISING, FALLING, IDLE }  # Plunger motion phases

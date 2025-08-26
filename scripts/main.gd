@@ -26,8 +26,6 @@ func _ready():
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
 	%TargetBank.connect("add_time", _add_time)
 	%TargetBank.connect("add_score_bonus", _modify_score)
-	%TargetBank2.connect("add_time", _add_time)
-	%TargetBank2.connect("add_score_bonus", _modify_score)
 	_create_new_ball()
 
 
