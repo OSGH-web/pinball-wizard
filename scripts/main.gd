@@ -24,12 +24,13 @@ var multiplier = 1:
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
-	%Ball.connect("modify_score", _modify_score)
+	_create_new_ball()
 
 
 func _create_new_ball():
 	var ball = ball_scene.instantiate()
 	ball.position = NEW_BALL_POSITION
+	ball.connect("modify_score", _modify_score)
 	$Shake_Layer/Balls.add_child(ball)
 
 	
