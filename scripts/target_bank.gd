@@ -26,7 +26,7 @@ func check_if_targets_hit():
 		return
 	
 	if target_hit_count == 3:
-		add_time.emit(10)
+		add_time.emit(time_bonus)
 		add_score_bonus.emit(score_bonus)
 		await get_tree().create_timer(0.5).timeout
 		reset_all_targets()
