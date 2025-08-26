@@ -77,8 +77,5 @@ func format_time(seconds: int) -> String:
 	
 
 func _on_shake_layer_child_entered_tree(node: Node) -> void:
-	if node is Ball:
-		node.connect("modify_score", _modify_score)
-
 	if node is TripleRolloverButtonGroup:
 		node.connect("modify_multiplier", _modify_multiplier)
