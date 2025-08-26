@@ -65,7 +65,7 @@ func shift_left():
 				button.reset_rolloverbutton()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("right_flipper"):
 		shift_right()
-	elif event.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("left_flipper"):
 		shift_left()

@@ -20,15 +20,15 @@ var multiplier = 1:
 
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
-	$Plunger.connect("game_started_signal", _on_game_started_signal)
-	$Ball.connect("modify_score", _modify_score)
-
+	%Plunger.connect("game_started_signal", _on_game_started_signal)
+	%Ball.connect("modify_score", _modify_score)
+	
 
 func _create_new_ball(x: float, y: float):
 	var ball = ball_scene.instantiate()
 	ball.position.x = x
 	ball.position.y = y
-	self.add_child(ball)
+	$Shake_Layer/Balls.add_child(ball)
 
 	
 func _on_game_started_signal():
@@ -71,7 +71,7 @@ func format_time(seconds: int) -> String:
 	var minutes = seconds / 60
 	var secs = seconds % 60
 	return "%02d:%02d" % [minutes, secs]
-
+	
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node is Ball:
