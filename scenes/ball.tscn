@@ -135,6 +135,7 @@ rotation = 6.5973444
 mass = 0.08
 physics_material_override = SubResource("PhysicsMaterial_sugp2")
 gravity_scale = 0.25
+continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_cxlvu")
