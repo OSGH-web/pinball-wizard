@@ -6,8 +6,9 @@ enum FlipperState { IDLE, TRIGGERED, RISING, FALLING }  # Flipper motion phases
 enum FlipperInput { NONE, PRESS, RELEASE }              # Player input events
 
 # --- Constants ---
-const FLIPPER_STRENGTH: float = 30
+const FLIPPER_STRENGTH: float = 50 # the maximum force the flipper can exert
 const TRIGGERED_COYOTE_FRAME_MAX: int = 3
+const FLIPPER_LENGTH: int = 24 # approximate length from axle to tip of flipper
 
 # --- Runtime variables ---
 var state: FlipperState = FlipperState.IDLE
@@ -59,13 +60,19 @@ func apply_collision_force(ball: RigidBody2D):
 	
 	var force = Vector2(0, 1).rotated(deg_to_rad(perpendicular_angle)) * FLIPPER_STRENGTH
 	
+	# measures how fair along the flipper the ball is
+	# the force produced by the flipper scales linearly with this value
+	var collision_distance_from_axis = (position - ball.global_collision_pos).length()
+
+	force *= collision_distance_from_axis / FLIPPER_LENGTH
+
 	ball.apply_central_impulse(force)
 
 func get_current_flipper_angle():
 	if not left_flipper:
-		return 55 - $FlipperBody.rotation_degrees
+		return 55 - $FlipperBodies.rotation_degrees
 	else:
-		return $FlipperBody.rotation_degrees - 55
+		return $FlipperBodies.rotation_degrees - 55
 
 func get_perpendicular_angle():
 	var current_flipper_angle = get_current_flipper_angle()

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bn88swkkd7ayb"]
+[gd_scene load_steps=17 format=3 uid="uid://bn88swkkd7ayb"]
 
-[ext_resource type="Texture2D" uid="uid://crfjgwtqx7q5" path="res://assets/sprites/flipper.png" id="1_3xiby"]
-[ext_resource type="Script" uid="uid://oypxml6vhgmv" path="res://scripts/flipper.gd" id="1_y7wee"]
-[ext_resource type="AudioStream" uid="uid://djoxgyvtqjbte" path="res://assets/audio/woodblock.wav" id="3_mo4dg"]
+[ext_resource type="Texture2D" uid="uid://cdykgnnnl6mg" path="res://assets/sprites/flipper.png" id="1_3xiby"]
+[ext_resource type="Script" uid="uid://dx3mfo4dpb8wf" path="res://scripts/flipper.gd" id="1_y7wee"]
+[ext_resource type="AudioStream" uid="uid://b4sjh1hrgr1f4" path="res://assets/audio/woodblock.wav" id="3_mo4dg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wfyh"]
 atlas = ExtResource("1_3xiby")
@@ -60,8 +60,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85g3d"]
-radius = 3.605289
-height = 33.28627
+radius = 2.61
+height = 33.29
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vewl4"]
+size = Vector2(29, 1)
 
 [sub_resource type="Animation" id="Animation_kvcsl"]
 length = 0.001
@@ -80,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlipperBody:rotation")
+tracks/1/path = NodePath("FlipperBodies:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +112,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlipperBody:rotation")
+tracks/1/path = NodePath("FlipperBodies:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlipperBody:rotation")
+tracks/1/path = NodePath("FlipperBodies:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -167,14 +170,24 @@ sprite_frames = SubResource("SpriteFrames_tipki")
 animation = &"trigger"
 centered = false
 
-[node name="FlipperBody" type="StaticBody2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(1.0000001, 1.0000001)
+[node name="FlipperBodies" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperBody"]
+[node name="FlipperBodyPassive" type="StaticBody2D" parent="FlipperBodies"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperBodies/FlipperBodyPassive"]
 position = Vector2(10.000005, 5.000002)
 rotation = -0.9948377
 shape = SubResource("CapsuleShape2D_85g3d")
+
+[node name="FlipperBodyActive" type="StaticBody2D" parent="FlipperBodies"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlipperBodies/FlipperBodyActive"]
+position = Vector2(12.000001, 3.0000002)
+rotation = 0.57595867
+shape = SubResource("RectangleShape2D_vewl4")
+one_way_collision = true
 
 [node name="Label" type="Panel" parent="."]
 visible = false

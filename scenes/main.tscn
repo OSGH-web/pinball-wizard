@@ -42,10 +42,10 @@ tile_map_data = PackedByteArray("AAAYAAAAAAABAAUAAAAYAAEAAAABAAUAAAAYAAIAAAABAAU
 tile_set = ExtResource("4_jyhfs")
 
 [node name="LeftBumper" parent="Shake_Layer" instance=ExtResource("6_tefeu")]
-position = Vector2(258, 268)
+position = Vector2(258, 266)
 
 [node name="RightBumper" parent="Shake_Layer" instance=ExtResource("6_tefeu")]
-position = Vector2(366, 268)
+position = Vector2(366, 266)
 scale = Vector2(-1, 1)
 left_bumper = false
 
