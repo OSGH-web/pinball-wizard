@@ -14,15 +14,12 @@ func _ready():
 		button.connect("button_is_set", check_if_all_buttons_are_set)
 
 func check_if_all_buttons_are_set():
-	var all_set := true
 	for button: RolloverButton in buttons:
 		if button.state != RolloverButton.RolloverButtonState.SET:
-			all_set = false
-			break
+			return
 
-	if all_set:
-		modify_multiplier.emit(1)
-		reset_all_buttons()
+	modify_multiplier.emit(1)
+	reset_all_buttons()
 
 func reset_all_buttons():
 	for button: RolloverButton in buttons:

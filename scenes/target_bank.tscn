@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu0pj1s6s7ymw"]
+
+[ext_resource type="Script" uid="uid://b2sf0e1rmtwyy" path="res://scripts/target_bank.gd" id="1_pu32h"]
+[ext_resource type="PackedScene" uid="uid://deowj0dbp3pav" path="res://scenes/target.tscn" id="1_x2ciu"]
+
+[node name="TargetBank" type="Node2D"]
+script = ExtResource("1_pu32h")
+
+[node name="Target" parent="." instance=ExtResource("1_x2ciu")]
+position = Vector2(8, 9)
+
+[node name="Target2" parent="." instance=ExtResource("1_x2ciu")]
+position = Vector2(22, 14)
+
+[node name="Target3" parent="." instance=ExtResource("1_x2ciu")]
+position = Vector2(36, 19)
+
+[node name="KnockdownTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="KnockdownTimer" to="." method="_on_knockdown_timer_timeout"]
