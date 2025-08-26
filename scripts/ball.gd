@@ -14,6 +14,11 @@ var death_penalty = -1000
 const debug_throw_strength_multiplier := 2.5
 signal modify_score
 	
+var global_collision_pos : Vector2 = Vector2.ZERO
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if state.get_contact_count() > 0:
+		global_collision_pos = state.get_contact_local_position(0)
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "FlipperBodyActive" && body.get_parent().get_parent() is Flipper:
