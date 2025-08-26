@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=14 format=4 uid="uid://bn68c8ajnoa4q"]
 
-[ext_resource type="Script" uid="uid://bnx3jrycl4pnd" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://pe12kdi80xnp" path="res://scenes/ball.tscn" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://c3nh27jiggrxk" path="res://scenes/shake_layer.gd" id="3_choun"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
-[ext_resource type="FontFile" uid="uid://b86m1rdbbrrm7" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://cr2l0w57gwgbl" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_85g3d"]
+[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
+[ext_resource type="PackedScene" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://dcmdeefrkityr" path="res://scenes/killzone.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
@@ -94,9 +94,6 @@ text = "Mult: x1"
 [node name="Timer" type="Timer" parent="Shake_Layer/UI"]
 wait_time = 180.0
 
-[node name="CircleBumper" parent="Shake_Layer" instance=ExtResource("9_85g3d")]
-position = Vector2(309, 104)
-
 [node name="Killzone" parent="Shake_Layer" instance=ExtResource("9_85g3d")]
 position = Vector2(305, 391)
 
@@ -113,5 +110,8 @@ z_index = 10
 position = Vector2(436, 301.25)
 rotation = 0.0
 
-[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[node name="CircleBumper" parent="Shake_Layer" instance=ExtResource("10_choun")]
+position = Vector2(311, 112)
+
+[connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
 [connection signal="timeout" from="Shake_Layer/UI/Timer" to="." method="_on_timer_timeout"]

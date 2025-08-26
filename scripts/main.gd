@@ -75,7 +75,7 @@ func format_time(seconds: int) -> String:
 	return "%02d:%02d" % [minutes, secs]
 	
 
-func _on_child_entered_tree(node: Node) -> void:
+func _on_shake_layer_child_entered_tree(node: Node) -> void:
 	if node is Ball:
 		node.connect("modify_score", _modify_score)
 
