@@ -18,21 +18,22 @@ var global_collision_pos : Vector2 = Vector2.ZERO
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() > 0:
-		global_collision_pos = state.get_contact_local_position(0)
+		var collider = state.get_contact_collider_object(0)
+
+		if collider.name == "FlipperBodyActive" && collider.get_parent().get_parent() is Flipper:
+			global_collision_pos = state.get_contact_local_position(0)
+			collider.get_parent().get_parent().apply_collision_force(self)
+
+		elif collider.get_parent() is Plunger:
+			collider.get_parent().apply_collision_force(self)
 
 func _on_body_entered(body: Node) -> void:
-	if body.name == "FlipperBodyActive" && body.get_parent().get_parent() is Flipper:
-		body.get_parent().get_parent().apply_collision_force(self)
-	elif body.get_parent() is Bumper && body.name == "Active":
+	if body.get_parent() is Bumper && body.name == "Active":
 		body.get_parent().apply_collision_force(self)
 		modify_score.emit(Bumper.score_value)
 	elif body is CircleBumper:
 		body.apply_collision_force(self)
 		modify_score.emit(CircleBumper.score_value)
-
-
-	elif body.get_parent() is Plunger:
-		body.get_parent().apply_collision_force(self)
 
 func _physics_process(delta: float) -> void:
 	_update_animation_frame()
