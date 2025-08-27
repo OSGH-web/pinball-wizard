@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpicwd4xqh2m1"]
+[gd_scene load_steps=9 format=3 uid="uid://dpicwd4xqh2m1"]
 
 [ext_resource type="Script" uid="uid://ous53jdp3uxw" path="res://scripts/ball_capture.gd" id="1_qrefi"]
 [ext_resource type="Texture2D" uid="uid://d0vx6bkdpx14n" path="res://assets/sprites/ball_capture.png" id="2_qdmvu"]
+[ext_resource type="AudioStream" uid="uid://bmoipi4jg4rmv" path="res://assets/audio/ball_capture.wav" id="3_qdmvu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrefi"]
 atlas = ExtResource("2_qdmvu")
@@ -47,5 +48,9 @@ frame = 1
 shape = SubResource("CircleShape2D_jkv2x")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qdmvu")
+pitch_scale = 1.2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
