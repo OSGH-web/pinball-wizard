@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://ds6i4c2lo52mv"]
+
+[ext_resource type="Script" uid="uid://do102wv5yjno3" path="res://scripts/ball_capture.gd" id="1_qrefi"]
+[ext_resource type="Texture2D" uid="uid://dcdsdyfo71l63" path="res://assets/sprites/ball_capture.png" id="2_qdmvu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("2_qdmvu")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+atlas = ExtResource("2_qdmvu")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbj1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkv2x"]
+radius = 15.0
+
+[node name="BallCapture" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource("1_qrefi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_muem4")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jkv2x")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
