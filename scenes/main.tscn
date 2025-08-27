@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=19 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
 [ext_resource type="PackedScene" path="res://scenes/bottom_ramp.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://cu0pj1s6s7ymw" path="res://scenes/target_bank.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://tte1dqpcsgje" path="res://scenes/spinner.tscn" id="14_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://hblmisd8wjs0" path="res://assets/sprites/8_8_green_tileset.png" id="14_jkv2x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
@@ -261,6 +262,10 @@ position = Vector2(355, 115)
 z_index = -1
 tile_map_data = PackedByteArray("AAAdABUAAAAEAAsAAAAdABYAAAAEAAwAAAAdABEAAAAAAAUAAAAdABIAAAAAAAUAAAAdABMAAAAAAAUAAAAdABQAAAAFAAoAAAAeABUAAAACAAkAAAAeABYAAAAHAAIAAAAeABcAAAABAAsAAAAhAA4AAAAAAAUAAAAhAA0AAAAAAAUAAAAhAAwAAAAAAAUAAAAhAAsAAAAAAAUAAAAhAAoAAAAAAAUAAAAhAAkAAAAAAAAAAAAdABAAAAAAAAUAAAAdAA8AAAAAAAUAAAAdAA4AAAAAAAUAAAAdAA0AAAAAAAUAAAAdAAwAAAAAAAUAAAAdAAsAAAAAAAUAAAAiAAkAAAABAAEAAAAeAAgAAAACAAQAAAAdAAcAAAAAAAAAAAAdAAgAAAAEAAMAAAAeAAYAAAAAAAAAAAAeAAcAAAAEAAMAAAAdAAoAAAAAAAUAAAAdAAkAAAAAAAUAAAAfAAcAAAACAAQAAAAfAAYAAAACAAAAAAAgAAYAAAACAAAAAAAhAAYAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_dp3eg")
+
+[node name="Spinner" parent="Shake_Layer" instance=ExtResource("14_a8y0u")]
+unique_name_in_owner = true
+position = Vector2(414, 136)
 
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
