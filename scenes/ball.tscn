@@ -1,14 +1,14 @@
 [gd_scene load_steps=22 format=3 uid="uid://pe12kdi80xnp"]
 
-[ext_resource type="Script" uid="uid://4qc4ejkevh06" path="res://scripts/ball.gd" id="1_cxlvu"]
-[ext_resource type="Texture2D" uid="uid://ttrp0jfcnqv" path="res://assets/sprites/pinball_frames.png" id="3_f7cbr"]
+[ext_resource type="Script" uid="uid://b10grbimopo1" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://4or8grccmku6" path="res://assets/sprites/pinball_frames.png" id="3_f7cbr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sugp2"]
 friction = 0.5
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyhfs"]
-radius = 6.75
+radius = 5.75
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4dx81"]
 atlas = ExtResource("3_f7cbr")
