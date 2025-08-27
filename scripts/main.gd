@@ -20,6 +20,7 @@ var multiplier = 1:
 		else:
 			multiplier = new_multiplier
 
+var damage_number_scene = preload("res://scenes/damage_number.tscn")
 
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
@@ -52,6 +53,11 @@ func _modify_score(score_value: int, _new_ball: bool = false):
 	if _new_ball:
 		_modify_multiplier(-1)
 		call_deferred("_create_new_ball")
+
+	var damage_number: Label = damage_number_scene.instantiate()
+	damage_number.text = str(score_value * multiplier)
+	damage_number.position = %Balls.get_child(0).position - Vector2(0, 40)
+	$Shake_Layer.add_child(damage_number)
 	
 	
 func _modify_multiplier(mult_value: int):
