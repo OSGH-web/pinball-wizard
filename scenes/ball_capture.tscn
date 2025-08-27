@@ -1,24 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds6i4c2lo52mv"]
+[gd_scene load_steps=8 format=3 uid="uid://dpicwd4xqh2m1"]
 
-[ext_resource type="Script" uid="uid://do102wv5yjno3" path="res://scripts/ball_capture.gd" id="1_qrefi"]
-[ext_resource type="Texture2D" uid="uid://dcdsdyfo71l63" path="res://assets/sprites/ball_capture.png" id="2_qdmvu"]
+[ext_resource type="Script" uid="uid://ous53jdp3uxw" path="res://scripts/ball_capture.gd" id="1_qrefi"]
+[ext_resource type="Texture2D" uid="uid://d0vx6bkdpx14n" path="res://assets/sprites/ball_capture.png" id="2_qdmvu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrefi"]
 atlas = ExtResource("2_qdmvu")
 region = Rect2(21, 0, 21, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdmvu"]
 atlas = ExtResource("2_qdmvu")
 region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfkbq"]
+atlas = ExtResource("2_qdmvu")
+region = Rect2(42, 0, 21, 21)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jkv2x")
+"texture": SubResource("AtlasTexture_qrefi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jbj1t")
+"texture": SubResource("AtlasTexture_qdmvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfkbq")
 }],
 "loop": true,
 "name": &"default",
