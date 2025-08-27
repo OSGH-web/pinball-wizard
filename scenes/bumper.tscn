@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgaqkaaebb2t2"]
+[gd_scene load_steps=8 format=3 uid="uid://bgaqkaaebb2t2"]
 
 [ext_resource type="Script" uid="uid://j2ibpvnqajhb" path="res://scripts/bumper.gd" id="1_63qnk"]
 [ext_resource type="Texture2D" uid="uid://2fbmr2s6vbgy" path="res://assets/sprites/left_bumper.png" id="1_y1o0u"]
+[ext_resource type="AudioStream" uid="uid://b1e04nfv5athi" path="res://assets/audio/bumper.wav" id="3_c24v7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c24v7"]
 atlas = ExtResource("1_y1o0u")
@@ -49,3 +50,6 @@ position = Vector2(-1, 0)
 position = Vector2(14, 14.000001)
 rotation = -0.61086524
 shape = SubResource("CapsuleShape2D_63qnk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c24v7")
