@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://deowj0dbp3pav"]
+[gd_scene load_steps=7 format=3 uid="uid://deowj0dbp3pav"]
 
-[ext_resource type="Script" uid="uid://37t1yuoc73rp" path="res://scripts/target.gd" id="1_b5a2r"]
+[ext_resource type="Script" uid="uid://baoowjolqgxnl" path="res://scripts/target.gd" id="1_b5a2r"]
 [ext_resource type="Texture2D" uid="uid://ct8ukt1xa7p5n" path="res://assets/sprites/hourglass_sheet.png" id="1_b37e2"]
+[ext_resource type="AudioStream" uid="uid://dapbymcderclb" path="res://assets/audio/target.wav" id="3_nlbrr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5a2r"]
 atlas = ExtResource("1_b37e2")
@@ -34,3 +35,6 @@ sprite_frames = SubResource("SpriteFrames_kuto0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 build_mode = 1
 polygon = PackedVector2Array(-8, 6, 8, 11, 8, -6, -8, -11)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nlbrr")

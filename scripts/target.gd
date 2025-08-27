@@ -16,6 +16,8 @@ func lower_target():
 	state = TargetState.LOWERED
 	$AnimatedSprite2D.frame = 1
 	
+	$AudioStreamPlayer2D.play()
+
 func raise_target():
 	state = TargetState.RAISED
 	$AnimatedSprite2D.frame = 0
