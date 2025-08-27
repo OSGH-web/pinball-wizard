@@ -125,3 +125,12 @@ func update_state() -> void:
 				state = FlipperState.RISING
 	
 				input = FlipperInput.NONE
+				
+		FlipperState.RISING:
+			if input == FlipperInput.RELEASE:
+				var current_frame = $AnimatedSprite2D.frame
+				var frame_rate = 60.0
+				var start_time = current_frame / frame_rate
+				$AnimationPlayer.play_section("fall", start_time)
+				state = FlipperState.FALLING
+				input = FlipperInput.NONE

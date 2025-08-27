@@ -27,6 +27,7 @@ func _ready():
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
 	%TargetBank.connect("add_time", _add_time)
 	%TargetBank.connect("add_score_bonus", _modify_score)
+	%Spinner.connect("spin_points", _modify_score)
 	_create_new_ball()
 
 
@@ -84,14 +85,16 @@ func _start_countdown(duration: int):
 	
 func _on_timer_timeout() -> void:
 	# Player loses the game
+	# print to catch potential game crash error. 
+	print("END GAME")
 	get_tree().quit()
-	
-	
+
+
 func format_time(seconds: int) -> String:
 	var minutes = seconds / 60
 	var secs = seconds % 60
 	return "%02d:%02d" % [minutes, secs]
-	
+
 
 func _on_shake_layer_child_entered_tree(node: Node) -> void:
 	if node is TripleRolloverButtonGroup:
