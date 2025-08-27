@@ -93,3 +93,19 @@ func die():
 	modify_score.emit(death_penalty, true)
 	self.queue_free()
 	
+
+func increment_collision_layer():
+	if get_collision_layer_value(1):
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(2, true)
+		print("moved ball to higher collision layer")
+
+func decrement_collision_layer():
+	if get_collision_layer_value(2):
+		set_collision_layer_value(1, true)
+		set_collision_mask_value(1, true)
+		set_collision_layer_value(2, false)
+		set_collision_mask_value(2, false)
+		print("moved ball to lower collision layer")
