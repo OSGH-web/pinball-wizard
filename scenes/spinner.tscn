@@ -1,39 +1,39 @@
 [gd_scene load_steps=16 format=3 uid="uid://137mkf7kmc61"]
 
 [ext_resource type="Script" uid="uid://cjhf6tnigyrl8" path="res://scripts/spinner.gd" id="1_78gc6"]
-[ext_resource type="Texture2D" uid="uid://i3ckpse08338" path="res://assets/sprites/spinner_sprite_sheet.png" id="1_i3bsr"]
+[ext_resource type="Texture2D" uid="uid://cc376nb1l8ril" path="res://assets/sprites/spinner_sprite_sheet.png" id="1_i3bsr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78gc6"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(0, 0, 20, 17)
+region = Rect2(0, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kry60"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(20, 0, 20, 17)
+region = Rect2(22, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_beaw0"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(40, 0, 20, 17)
+region = Rect2(44, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wjsw"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(60, 0, 20, 17)
+region = Rect2(66, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjgub"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(80, 0, 20, 17)
+region = Rect2(88, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvma1"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(100, 0, 20, 17)
+region = Rect2(110, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qt8r4"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(120, 0, 20, 17)
+region = Rect2(132, 0, 22, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_572xw"]
 atlas = ExtResource("1_i3bsr")
-region = Rect2(140, 0, 20, 17)
+region = Rect2(154, 0, 22, 17)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xdg4i"]
 animations = [{

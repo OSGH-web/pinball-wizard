@@ -1,6 +1,6 @@
 extends Label
 
-const ANIMATION_RISE_HEIGHT = 30
+const ANIMATION_RISE_HEIGHT = 10
 const ANIMATION_DURATION = 0.35
 
 func _ready():
