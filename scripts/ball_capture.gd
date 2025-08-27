@@ -1,10 +1,10 @@
 extends StaticBody2D
 class_name BallCapture
 
-const BALL_CAPTURE_STRENGTH = 20
-const MAX_FORCE_MAGNITUDE = 5
+const BALL_CAPTURE_STRENGTH = 30
+const MAX_FORCE_MAGNITUDE = 10
 # if the center of the ball is within this distance of the center of the ball capture, the ball will be locked
-const RELEASE_FORCE_MAGNITUDE = 25
+const RELEASE_FORCE_MAGNITUDE = 15
 const LOCK_DISTANCE_THRESHOLD = 0.5
 const score_value = 2000
 
@@ -15,13 +15,29 @@ var state: BallCaptureState = BallCaptureState.ACTIVE
 # when a ball is locked, this variable stores a reference to the locked ball
 var lockedBall: Ball = null
 
+# release_direction is normalized when the ball is released
+# i.e. the magnitude of the release_direction vector has no effect on release
+# force strength
+@export var release_direction = Vector2(1, 5)
+
+
+func _process(delta: float) -> void:
+	match state:
+		BallCaptureState.ACTIVE:
+			$AnimatedSprite2D.frame = 1 # return to default appearance -- gray border
+		BallCaptureState.INACTIVE:
+			$AnimatedSprite2D.frame = 2 # indicate that the ball capture is inactive
+		BallCaptureState.BALL_LOCKED:
+			$AnimatedSprite2D.frame = 0 # show a red border around the ball capture
+
 func apply_collision_force(ball: RigidBody2D, collision_pos: Vector2):
 	if state == BallCaptureState.INACTIVE || state == BallCaptureState.BALL_LOCKED:
 		return
-	
+
 	if state == BallCaptureState.RELEASING:
-		ball.apply_central_impulse(Vector2(0, -1) * RELEASE_FORCE_MAGNITUDE)
-		state = BallCaptureState.ACTIVE
+		ball.apply_central_impulse(release_direction.normalized() * RELEASE_FORCE_MAGNITUDE)
+		state = BallCaptureState.INACTIVE
+		$Timer.start()
 		return
 	
 	if state != BallCaptureState.ACTIVE:
@@ -49,17 +65,16 @@ func lock_ball(ball: Ball):
 	lockedBall.position = position
 	lockedBall.modify_score.emit(score_value)
 	$Timer.start()
-	
-	$AnimatedSprite2D.frame = 0 # show a red border around the ball capture
 
 func release_ball():
 	state = BallCaptureState.RELEASING
 	lockedBall.unfreeze_requested = true
 	lockedBall = null
-	
-	$AnimatedSprite2D.frame = 1 # return to default appearance -- gray border
-
 
 func _on_timer_timeout() -> void:
 	$Timer.stop()
-	release_ball()
+
+	if state == BallCaptureState.BALL_LOCKED:
+		release_ball()
+	elif state == BallCaptureState.INACTIVE:
+		state = BallCaptureState.ACTIVE
