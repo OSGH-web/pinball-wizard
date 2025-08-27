@@ -131,6 +131,7 @@ animations = [{
 }]
 
 [node name="Ball" type="RigidBody2D"]
+z_index = 1
 rotation = 6.5973444
 mass = 0.08
 physics_material_override = SubResource("PhysicsMaterial_sugp2")

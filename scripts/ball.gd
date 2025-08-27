@@ -13,8 +13,13 @@ var debug_update_velocity_requested := false
 var death_penalty = -1000
 const debug_throw_strength_multiplier := 2.5
 signal modify_score
-	
+
 var global_collision_pos : Vector2 = Vector2.ZERO
+
+# freeze_requested and unfreeze_requested can be set if you want to freeze/unfreeze the ball
+var freeze_requested = false
+var unfreeze_requested = false
+
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.get_contact_count() > 0:
@@ -26,6 +31,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 		elif collider.get_parent() is Plunger:
 			collider.get_parent().apply_collision_force(self)
+
+		elif collider is BallCapture:
+			var collision_pos = state.get_contact_local_position(0)
+			collider.apply_collision_force(self, collision_pos)
 
 func _on_body_entered(body: Node) -> void:
 	if body.get_parent() is Bumper && body.name == "Active":
@@ -43,9 +52,14 @@ func _on_body_entered(body: Node) -> void:
 func _physics_process(delta: float) -> void:
 	_update_animation_frame()
 
+	_handle_freeze_requests()
+
 	_debug_handle_mouse_input()
 
+	check_for_bugged_collision_layer()
+
 	move_and_collide(Vector2.ZERO)
+
 
 # helper, called during _physics_process
 func _update_animation_frame():
@@ -78,6 +92,20 @@ func _debug_handle_mouse_input():
 		debug_final_click_position = Vector2.ZERO
 
 
+# helper, called during _physics_process
+func _handle_freeze_requests():
+	if freeze_requested:
+		linear_velocity = Vector2.ZERO
+		angular_velocity = 0
+
+		freeze_requested = false
+		freeze = true
+
+	if unfreeze_requested:
+		freeze = false
+		unfreeze_requested = false
+
+
 func _input(event):
 	# DEBUG: listen for mouse clicks
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
@@ -93,3 +121,25 @@ func die():
 	modify_score.emit(death_penalty, true)
 	self.queue_free()
 	
+
+func increment_collision_layer():
+	if get_collision_layer_value(1):
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+		set_collision_layer_value(2, true)
+		set_collision_mask_value(2, true)
+		z_index = 2
+
+func decrement_collision_layer():
+	if get_collision_layer_value(2):
+		set_collision_layer_value(1, true)
+		set_collision_mask_value(1, true)
+		set_collision_layer_value(2, false)
+		set_collision_mask_value(2, false)
+		z_index = 1
+
+func check_for_bugged_collision_layer():
+	# 170 is slightly lower than the lower entrance to the ramp
+	if get_collision_layer_value(2) && position[1] > 170:
+		print("resetting collision layer -- ball position too low")
+		decrement_collision_layer()
