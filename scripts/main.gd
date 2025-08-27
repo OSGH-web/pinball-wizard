@@ -48,7 +48,7 @@ func _add_time(time):
 func _modify_score(score_value: int, _new_ball: bool = false):
 	# Might need to change - right now the multiplier will also multipy the death penalty. 
 	score += score_value * multiplier
-	%UI/Score.text = str(score)
+	%UI/HBoxContainer/Score.text = str(score)
 	if _new_ball:
 		_modify_multiplier(-1)
 		call_deferred("_create_new_ball")
@@ -56,7 +56,7 @@ func _modify_score(score_value: int, _new_ball: bool = false):
 	
 func _modify_multiplier(mult_value: int):
 	multiplier += mult_value
-	%UI/Multiplier.text = "Mult: x%d" % multiplier
+	%UI/HBoxContainer/Multiplier.text = "x%d" % multiplier
 	
 	
 func _process(_delta: float) -> void:
