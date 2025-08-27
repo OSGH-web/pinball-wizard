@@ -5,6 +5,7 @@ const BALL_CAPTURE_STRENGTH = 20
 const MAX_FORCE_MAGNITUDE = 5
 # if the center of the ball is within this distance of the center of the ball capture, the ball will be locked
 const LOCK_DISTANCE_THRESHOLD = 0.5
+const score_value = 2000
 
 enum BallCaptureState { INACTIVE, ACTIVE, BALL_LOCKED, RELEASING }
 
@@ -45,6 +46,7 @@ func lock_ball(ball: Ball):
 	lockedBall = ball
 	lockedBall.freeze_requested = true
 	lockedBall.position = position
+	lockedBall.modify_score.emit(score_value)
 	$Timer.start()
 	
 	$AnimatedSprite2D.frame = 0 # show a red border around the ball capture
