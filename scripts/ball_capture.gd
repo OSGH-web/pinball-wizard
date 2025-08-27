@@ -2,7 +2,7 @@ extends StaticBody2D
 class_name BallCapture
 
 const BALL_CAPTURE_STRENGTH = 30
-const MAX_FORCE_MAGNITUDE = 10
+const MAX_FORCE_MAGNITUDE = 15
 # if the center of the ball is within this distance of the center of the ball capture, the ball will be locked
 const RELEASE_FORCE_MAGNITUDE = 15
 const LOCK_DISTANCE_THRESHOLD = 0.5
