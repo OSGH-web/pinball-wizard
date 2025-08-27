@@ -28,6 +28,9 @@ func check_if_targets_hit():
 	if target_hit_count == 3:
 		add_time.emit(time_bonus)
 		add_score_bonus.emit(score_bonus)
+
+		$AudioStreamPlayer2D.play()
+
 		await get_tree().create_timer(0.5).timeout
 		reset_all_targets()
 	
