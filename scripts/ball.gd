@@ -103,7 +103,6 @@ func increment_collision_layer():
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
 		z_index = 2
-		print("moved ball to higher collision layer")
 
 func decrement_collision_layer():
 	if get_collision_layer_value(2):
@@ -112,7 +111,6 @@ func decrement_collision_layer():
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(2, false)
 		z_index = 1
-		print("moved ball to lower collision layer")
 
 func check_for_bugged_collision_layer():
 	# 170 is slightly lower than the lower entrance to the ramp
