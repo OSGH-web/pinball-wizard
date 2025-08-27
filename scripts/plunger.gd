@@ -44,10 +44,15 @@ func _physics_process(delta: float):
 				$AnimationPlayer.play("Lower")
 				state = PlungerState.FALLING
 				input = PlungerInput.NONE
+
+				$PlungerDownSoundFX.play()
+
 		PlungerState.FALLING:
 			if $PlungerSprites.frame == 3 and input == PlungerInput.RELEASE:
 				$AnimationPlayer.play_backwards("Lower")
 				state = PlungerState.RISING
 				input = PlungerInput.NONE
+				$PlungerDownSoundFX.stop()
+				$PlungerUpSoundFX.play()
 		PlungerState.RISING:
 			pass
