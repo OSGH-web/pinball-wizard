@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=4 format=3 uid="uid://dcnebljg3xc5w"]
 
-[ext_resource type="FontFile" uid="uid://b86m1rdbbrrm7" path="res://assets/fonts/Beanstalk.ttf" id="1_ntc7u"]
-[ext_resource type="Texture2D" uid="uid://b43qo7b2uascd" path="res://assets/ui/ui_panel.png" id="1_q0qlm"]
+[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="1_ntc7u"]
+[ext_resource type="Texture2D" uid="uid://bgv5jwnlwtc6l" path="res://assets/ui/ui_panel.png" id="1_q0qlm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntc7u"]
 content_margin_left = 3.0

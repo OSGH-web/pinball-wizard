@@ -5,9 +5,11 @@ enum TargetState { RAISED, LOWERED }
 
 var state = TargetState.RAISED
 
-const score_value = 500
+@export var score_value = 500
 
 signal target_is_hit
+
+@export var is_stand_alone = false
 			
 func lower_target():
 	if state == TargetState.LOWERED:
