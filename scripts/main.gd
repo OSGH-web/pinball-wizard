@@ -54,9 +54,13 @@ func _modify_score(score_value: int, _new_ball: bool = false):
 		_modify_multiplier(-1)
 		call_deferred("_create_new_ball")
 
+	var ball_position = %Balls.get_child(0).position
+	const vertical_damage_number_offset = 40
+
 	var damage_number: Label = damage_number_scene.instantiate()
 	damage_number.text = str(score_value * multiplier)
-	damage_number.position = %Balls.get_child(0).position - Vector2(0, 40)
+	damage_number.position.y = ball_position.y - vertical_damage_number_offset
+	damage_number.position.x = ball_position.x - (damage_number.size.x / 2)
 	$Shake_Layer.add_child(damage_number)
 	
 	
