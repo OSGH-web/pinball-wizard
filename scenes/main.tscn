@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
-[ext_resource type="TileSet" uid="uid://dmrlnwwpwijaj" path="res://resources/tilesets/small_green_tileset.tres" id="7_jbj1t"]
+[ext_resource type="TileSet" uid="uid://dmrlnwwpwijaj" path="res://resources/tilesets/small_silver_tileset.tres" id="7_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://cr2l0w57gwgbl" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://0anydsftllip" path="res://scenes/spinner.tscn" id="15_jkv2x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
-bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
+bg_color = Color(0.227451, 0.266667, 0.4, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_muem4"]
 b = Vector2(16, 1)
@@ -47,6 +47,17 @@ offset_bottom = 176.0
 scale = Vector2(3, 3)
 theme = ExtResource("2_a8y0u")
 text = "03:00"
+horizontal_alignment = 2
+
+[node name="Hi Score" type="Label" parent="UI"]
+offset_left = 457.0
+offset_top = 24.0
+offset_right = 502.0
+offset_bottom = 52.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_a8y0u")
+text = "Hi Score:
+1000000"
 horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
