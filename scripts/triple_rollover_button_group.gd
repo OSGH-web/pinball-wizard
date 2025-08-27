@@ -19,6 +19,9 @@ func check_if_all_buttons_are_set():
 			return
 
 	modify_multiplier.emit(1)
+
+	$AudioStreamPlayer2D.play()
+
 	reset_all_buttons()
 
 func reset_all_buttons():
