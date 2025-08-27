@@ -10,9 +10,10 @@ var debug_final_click_position := Vector2.ZERO
 var debug_velocity_reset_requested := false
 var debug_update_velocity_requested := false
 # This should probably go up as the game goes on.
-var death_penalty = -1000
+var death_penalty = -5000
 const debug_throw_strength_multiplier := 2.5
 signal modify_score
+signal add_time
 
 var global_collision_pos : Vector2 = Vector2.ZERO
 
@@ -47,7 +48,12 @@ func _on_body_entered(body: Node) -> void:
 		if body.state == Target.TargetState.RAISED:
 			body.lower_target()
 			modify_score.emit(body.score_value)
-			body.target_is_hit.emit()
+			if body.is_stand_alone:
+				add_time.emit(10.0)
+				await get_tree().create_timer(1).timeout
+				body.raise_target()
+			else:
+				body.target_is_hit.emit()
 
 func _physics_process(delta: float) -> void:
 	_update_animation_frame()
