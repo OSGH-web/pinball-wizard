@@ -4,6 +4,7 @@ class_name BallCapture
 const BALL_CAPTURE_STRENGTH = 20
 const MAX_FORCE_MAGNITUDE = 5
 # if the center of the ball is within this distance of the center of the ball capture, the ball will be locked
+const RELEASE_FORCE_MAGNITUDE = 25
 const LOCK_DISTANCE_THRESHOLD = 0.5
 const score_value = 2000
 
@@ -19,7 +20,7 @@ func apply_collision_force(ball: RigidBody2D, collision_pos: Vector2):
 		return
 	
 	if state == BallCaptureState.RELEASING:
-		ball.apply_central_impulse(Vector2(0, -1) * MAX_FORCE_MAGNITUDE * 5)
+		ball.apply_central_impulse(Vector2(0, -1) * RELEASE_FORCE_MAGNITUDE)
 		state = BallCaptureState.ACTIVE
 		return
 	
