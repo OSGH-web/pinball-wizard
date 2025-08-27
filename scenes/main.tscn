@@ -1,23 +1,23 @@
 [gd_scene load_steps=20 format=4 uid="uid://bn68c8ajnoa4q"]
 
-[ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://bnx3jrycl4pnd" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://c3nh27jiggrxk" path="res://scripts/shake_layer.gd" id="3_choun"]
+[ext_resource type="Theme" uid="uid://dcnebljg3xc5w" path="res://resources/theme/main_ui_theme.tres" id="2_a8y0u"]
+[ext_resource type="Script" uid="uid://sxtp0r3bk3kf" path="res://scripts/shake_layer.gd" id="3_choun"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
 [ext_resource type="TileSet" uid="uid://dmrlnwwpwijaj" path="res://resources/tilesets/small_green_tileset.tres" id="7_jbj1t"]
-[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="7_o6xl0"]
-[ext_resource type="PackedScene" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://dcmdeefrkityr" path="res://scenes/killzone.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://cr2l0w57gwgbl" path="res://scenes/triple_rollover_button_group.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://yy4kt2x5ge2" path="res://scenes/circle_bumper.tscn" id="10_choun"]
-[ext_resource type="PackedScene" path="res://scenes/bottom_ramp.tscn" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://cu0pj1s6s7ymw" path="res://scenes/target_bank.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://lhxdep35gg4x" path="res://scenes/bottom_ramp.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" path="res://scenes/target_bank.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" path="res://scenes/trip_wire.tscn" id="14_a8y0u"]
-[ext_resource type="PackedScene" path="res://scenes/ball_capture.tscn" id="15_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://daf2iqkk3h60t" path="res://scenes/spinner.tscn" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://dpicwd4xqh2m1" path="res://scenes/ball_capture.tscn" id="15_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://0anydsftllip" path="res://scenes/spinner.tscn" id="15_jkv2x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
 bg_color = Color(0.0705882, 0.305882, 0.537255, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_muem4"]
@@ -36,34 +36,39 @@ unique_name_in_owner = true
 z_index = -1
 offset_right = 640.0
 offset_bottom = 362.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8y0u")
+metadata/_edit_use_anchors_ = true
 
 [node name="TimerLabel" type="Label" parent="UI"]
-offset_left = 64.0
-offset_top = 16.0
-offset_right = 176.0
-offset_bottom = 67.0
-theme_override_fonts/font = ExtResource("7_o6xl0")
-theme_override_font_sizes/font_size = 48
-text = "3:00"
+offset_left = 58.000004
+offset_top = 160.0
+offset_right = 88.0
+offset_bottom = 176.0
+scale = Vector2(3, 3)
+theme = ExtResource("2_a8y0u")
+text = "03:00"
+horizontal_alignment = 2
 
-[node name="Score" type="Label" parent="UI"]
-offset_left = 464.0
-offset_top = 16.0
-offset_right = 644.0
-offset_bottom = 72.0
-theme_override_fonts/font = ExtResource("7_o6xl0")
-theme_override_font_sizes/font_size = 48
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 453.0
+offset_top = 160.0
+offset_right = 514.3333
+offset_bottom = 176.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Score" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_a8y0u")
 text = "0"
+horizontal_alignment = 2
 
-[node name="Multiplier" type="Label" parent="UI"]
-offset_left = 464.0
-offset_top = 72.0
-offset_right = 644.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("7_o6xl0")
-theme_override_font_sizes/font_size = 48
-text = "Mult: x1"
+[node name="Multiplier" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_a8y0u")
+text = "x1"
 
 [node name="Timer" type="Timer" parent="UI"]
 wait_time = 180.0

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ocmaolndy52"]
+
+[ext_resource type="Theme" uid="uid://dcnebljg3xc5w" path="res://resources/theme/main_ui_theme.tres" id="1_aie4f"]
+[ext_resource type="Script" uid="uid://bl3el64ys0g3h" path="res://scripts/damage_number.gd" id="2_l4fel"]
+
+[node name="DamageNumber" type="Label"]
+z_index = 3
+z_as_relative = false
+theme = ExtResource("1_aie4f")
+text = "17"
+script = ExtResource("2_l4fel")

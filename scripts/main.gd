@@ -20,6 +20,7 @@ var multiplier = 1:
 		else:
 			multiplier = new_multiplier
 
+var damage_number_scene = preload("res://scenes/damage_number.tscn")
 
 func _ready():
 	%UI/TimerLabel.text = format_time(countdown_time)
@@ -49,15 +50,24 @@ func _add_time(time):
 func _modify_score(score_value: int, _new_ball: bool = false):
 	# Might need to change - right now the multiplier will also multipy the death penalty. 
 	score += score_value * multiplier
-	%UI/Score.text = str(score)
+	%UI/HBoxContainer/Score.text = str(score)
 	if _new_ball:
 		_modify_multiplier(-1)
 		call_deferred("_create_new_ball")
+
+	var ball_position = %Balls.get_child(0).position
+	const vertical_damage_number_offset = 40
+
+	var damage_number: Label = damage_number_scene.instantiate()
+	damage_number.text = str(score_value * multiplier)
+	damage_number.position.y = ball_position.y - vertical_damage_number_offset
+	damage_number.position.x = ball_position.x - (damage_number.size.x / 2)
+	$Shake_Layer.add_child(damage_number)
 	
 	
 func _modify_multiplier(mult_value: int):
 	multiplier += mult_value
-	%UI/Multiplier.text = "Mult: x%d" % multiplier
+	%UI/HBoxContainer/Multiplier.text = "x%d" % multiplier
 	
 	
 func _process(_delta: float) -> void:
