@@ -45,6 +45,8 @@ func _physics_process(delta: float) -> void:
 
 	_debug_handle_mouse_input()
 
+	check_for_bugged_collision_layer()
+
 	move_and_collide(Vector2.ZERO)
 
 # helper, called during _physics_process
@@ -100,6 +102,7 @@ func increment_collision_layer():
 		set_collision_mask_value(1, false)
 		set_collision_layer_value(2, true)
 		set_collision_mask_value(2, true)
+		z_index = 2
 		print("moved ball to higher collision layer")
 
 func decrement_collision_layer():
@@ -108,4 +111,11 @@ func decrement_collision_layer():
 		set_collision_mask_value(1, true)
 		set_collision_layer_value(2, false)
 		set_collision_mask_value(2, false)
+		z_index = 1
 		print("moved ball to lower collision layer")
+
+func check_for_bugged_collision_layer():
+	# 170 is slightly lower than the lower entrance to the ramp
+	if get_collision_layer_value(2) && position[1] > 170:
+		print("resetting collision layer -- ball position too low")
+		decrement_collision_layer()
