@@ -1,11 +1,11 @@
 extends StaticBody2D
 class_name BallCapture
 
-const BALL_CAPTURE_STRENGTH = 30
+const BALL_CAPTURE_STRENGTH = 15
 const MAX_FORCE_MAGNITUDE = 15
 # if the center of the ball is within this distance of the center of the ball capture, the ball will be locked
 const RELEASE_FORCE_MAGNITUDE = 15
-const LOCK_DISTANCE_THRESHOLD = 0.5
+const LOCK_DISTANCE_THRESHOLD = 1
 const score_value = 2000
 
 enum BallCaptureState { INACTIVE, ACTIVE, BALL_LOCKED, RELEASING }
@@ -42,7 +42,6 @@ func apply_collision_force(ball: RigidBody2D, collision_pos: Vector2):
 	
 	if state != BallCaptureState.ACTIVE:
 		return 
-
 
 	# if the ball is close enough to the center, lock its position
 	var collision_distance_from_center = (position - collision_pos).length()
