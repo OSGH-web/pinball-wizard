@@ -19,3 +19,5 @@ func apply_collision_force(ball: RigidBody2D):
 
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.play()
+
+	$AudioStreamPlayer2D.play()

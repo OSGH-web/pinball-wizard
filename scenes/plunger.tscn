@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://da7iws7rn34ic"]
+[gd_scene load_steps=13 format=3 uid="uid://da7iws7rn34ic"]
 
 [ext_resource type="Script" uid="uid://cjeynbd2h4tfv" path="res://scripts/plunger.gd" id="1_qcbao"]
 [ext_resource type="Texture2D" uid="uid://bditfufxos73q" path="res://assets/sprites/plunger/plunger_sprite_sheet1.png" id="2_1r2yk"]
 [ext_resource type="Texture2D" uid="uid://3v4pt6ssujfq" path="res://assets/sprites/plunger/plunger_sprite_sheet2.png" id="3_kegrl"]
 [ext_resource type="Texture2D" uid="uid://vcutuuc7c8y8" path="res://assets/sprites/plunger/plunger_sprite_sheet3.png" id="4_tsebl"]
 [ext_resource type="Texture2D" uid="uid://bn2bv0fhjfav8" path="res://assets/sprites/plunger/plunger_sprite_sheet4.png" id="5_uj50b"]
+[ext_resource type="AudioStream" uid="uid://cvxtjt576dkw" path="res://assets/audio/plunger_down.wav" id="6_kegrl"]
+[ext_resource type="AudioStream" uid="uid://7ypgpvfs48ov" path="res://assets/audio/plunger_up.wav" id="7_tsebl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1r2yk"]
 bounce = 0.4
@@ -112,3 +114,11 @@ animation = &"lower"
 libraries = {
 &"": SubResource("AnimationLibrary_kbq5m")
 }
+
+[node name="PlungerDownSoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kegrl")
+pitch_scale = 0.75
+
+[node name="PlungerUpSoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_tsebl")
+pitch_scale = 0.75
