@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=4 uid="uid://cr2l0w57gwgbl"]
+[gd_scene load_steps=5 format=4 uid="uid://ch3gu0x5xsumw"]
 
-[ext_resource type="Script" uid="uid://c6kaoja6asx2q" path="res://scripts/triple_rollover_button_group.gd" id="1_6ivli"]
+[ext_resource type="Script" uid="uid://cmwwjw7l4v8xv" path="res://scripts/triple_rollover_button_group.gd" id="1_6ivli"]
 [ext_resource type="PackedScene" uid="uid://cjanv1jw70dmm" path="res://scenes/rollover_button.tscn" id="1_qiauy"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="2_6ivli"]
 [ext_resource type="AudioStream" uid="uid://chbllwkyw7hi1" path="res://assets/audio/multiplier_up.wav" id="4_piaiu"]
@@ -21,6 +21,6 @@ position = Vector2(57, -14)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAUAAAADAAAAAAAAAAUAAAAGAAAAAAAAAAUAAAAJAAAAAAAAAAUAAAAAAP//AAAAAAUAAAAAAP7/AAAAAAUAAAADAP//AAAAAAUAAAADAP7/AAAAAAUAAAAGAP//AAAAAAUAAAAGAP7/AAAAAAUAAAAJAP//AAAAAAUAAAAJAP7/AAAAAAUAAAA=")
 tile_set = ExtResource("2_6ivli")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="RolloverCompleteSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_piaiu")
 pitch_scale = 0.5

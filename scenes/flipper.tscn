@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bn88swkkd7ayb"]
 
-[ext_resource type="Texture2D" uid="uid://cdykgnnnl6mg" path="res://assets/sprites/flipper.png" id="1_3xiby"]
-[ext_resource type="Script" uid="uid://dx3mfo4dpb8wf" path="res://scripts/flipper.gd" id="1_y7wee"]
-[ext_resource type="AudioStream" uid="uid://bqheu05y3j8nf" path="res://assets/audio/flipper.wav" id="3_vewl4"]
+[ext_resource type="Texture2D" uid="uid://crfjgwtqx7q5" path="res://assets/sprites/flipper.png" id="1_3xiby"]
+[ext_resource type="Script" uid="uid://oypxml6vhgmv" path="res://scripts/flipper.gd" id="1_y7wee"]
+[ext_resource type="AudioStream" uid="uid://cb4fersuonw6m" path="res://assets/audio/flipper_2.wav" id="3_vewl4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wfyh"]
 atlas = ExtResource("1_3xiby")
@@ -214,5 +214,6 @@ offset_right = 47.0
 offset_bottom = 64.0
 text = "-145"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FlipperSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vewl4")
+volume_db = -4.0

@@ -19,7 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 			body.modify_score.emit(score_value)
 			button_is_set.emit()
 
-			$AudioStreamPlayer2D.play()
+			$RolloverButtonSound.play()
 
 
 func reset_rolloverbutton():

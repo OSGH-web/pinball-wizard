@@ -65,7 +65,7 @@ func lock_ball(ball: Ball):
 	lockedBall.modify_score.emit(score_value)
 	$Timer.start()
 
-	$AudioStreamPlayer2D.play()
+	$BallCaptureSound.play()
 
 func release_ball():
 	state = BallCaptureState.RELEASING

@@ -105,7 +105,7 @@ func update_state() -> void:
 		FlipperState.IDLE:
 			if input == FlipperInput.PRESS:
 				$AnimationPlayer.play("trigger")
-				$AudioStreamPlayer.play()
+				$FlipperSound.play()
 				state = FlipperState.RISING
 				input = FlipperInput.NONE
 		
@@ -121,7 +121,7 @@ func update_state() -> void:
 				var frame_rate = 60.0
 				var start_time = current_frame / frame_rate
 				$AnimationPlayer.play_section("trigger", start_time)
-				$AudioStreamPlayer.play()
+				$FlipperSound.play()
 				state = FlipperState.RISING
 	
 				input = FlipperInput.NONE

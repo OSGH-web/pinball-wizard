@@ -50,7 +50,7 @@ func _on_body_entered(body: Node) -> void:
 			modify_score.emit(body.score_value)
 			if body.is_stand_alone:
 				add_time.emit(10.0)
-				await get_tree().create_timer(1).timeout
+				await get_tree().create_timer(2).timeout
 				body.raise_target()
 			else:
 				body.target_is_hit.emit()

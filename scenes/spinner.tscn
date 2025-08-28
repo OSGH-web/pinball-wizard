@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://0anydsftllip"]
+[gd_scene load_steps=17 format=3 uid="uid://137mkf7kmc61"]
 
 [ext_resource type="Script" uid="uid://cjhf6tnigyrl8" path="res://scripts/spinner.gd" id="1_78gc6"]
 [ext_resource type="Texture2D" uid="uid://cc376nb1l8ril" path="res://assets/sprites/spinner_sprite_sheet.png" id="1_i3bsr"]
@@ -137,7 +137,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_3o07h")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SpinnerSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kry60")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
