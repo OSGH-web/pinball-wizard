@@ -259,3 +259,4 @@ script = ExtResource("20_gqmmt")
 [connection signal="mouse_exited" from="UI/AudioToggle" to="UI/AudioToggle" method="_on_mouse_exited"]
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
+[connection signal="finished" from="BackgroundMusic" to="BackgroundMusic" method="_on_finished"]
