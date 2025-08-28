@@ -14,6 +14,7 @@ func _input(event):
 func shake_screen(is_left: bool, amount := 10.0, duration := 0.25):
 	$ShakeCooldown.start()
 	var tween := create_tween()
+	$TableShakeSound.play()
 	if is_left:
 		var off := Vector2(
 			rng.randf_range(-amount -5, -amount),

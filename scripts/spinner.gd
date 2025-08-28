@@ -31,7 +31,7 @@ func _rotate():
 			else:
 				$AnimationPlayer.set_speed_scale(_get_speed_scale())
 
-			$AudioStreamPlayer2D.play()
+			$SpinnerSound.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:

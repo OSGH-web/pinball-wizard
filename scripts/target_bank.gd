@@ -29,9 +29,9 @@ func check_if_targets_hit():
 		add_time.emit(time_bonus)
 		add_score_bonus.emit(score_bonus)
 
-		$AudioStreamPlayer2D.play()
+		$TargetBankCompleteSound.play()
 
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(2).timeout
 		reset_all_targets()
 	
 	

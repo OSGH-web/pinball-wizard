@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuglcb2k7asw2"]
+[gd_scene load_steps=3 format=3 uid="uid://dcmdeefrkityr"]
 
-[ext_resource type="Script" uid="uid://b5s7dxvwr3p3o" path="res://scripts/killzone.gd" id="1_xlapc"]
+[ext_resource type="Script" uid="uid://cqf0nydxs6rmb" path="res://scripts/killzone.gd" id="1_xlapc"]
 [ext_resource type="AudioStream" uid="uid://dhmb1oc7ym5j2" path="res://assets/audio/death.wav" id="2_kl8fp"]
 
 [node name="Killzone" type="Area2D"]
 script = ExtResource("1_xlapc")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="KillzoneSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kl8fp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjanv1jw70dmm"]
 
 [ext_resource type="Script" uid="uid://b6oky1v3erxrn" path="res://scripts/rollover_button.gd" id="1_djyae"]
-[ext_resource type="Texture2D" uid="uid://dwkc01imobsol" path="res://assets/sprites/rollover_button.png" id="2_rvvfu"]
-[ext_resource type="AudioStream" uid="uid://byat6sgfs7523" path="res://assets/audio/rollover.wav" id="3_rvvfu"]
+[ext_resource type="Texture2D" uid="uid://buia8rn03d3qg" path="res://assets/sprites/rollover_button.png" id="2_rvvfu"]
+[ext_resource type="AudioStream" uid="uid://dhs2io88h874b" path="res://assets/audio/rollover.wav" id="3_rvvfu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85g3d"]
 atlas = ExtResource("2_rvvfu")
@@ -40,7 +40,7 @@ sprite_frames = SubResource("SpriteFrames_ya4ey")
 position = Vector2(5, 17.5)
 shape = SubResource("RectangleShape2D_eb6dy")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="RolloverButtonSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_rvvfu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
