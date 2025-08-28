@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=29 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
 [ext_resource type="Theme" uid="uid://dcnebljg3xc5w" path="res://resources/theme/main_ui_theme.tres" id="2_a8y0u"]
-[ext_resource type="Script" uid="uid://c3nh27jiggrxk" path="res://scripts/shake_layer.gd" id="3_choun"]
+[ext_resource type="Script" uid="uid://r0hobq0o4p53" path="res://scripts/audio_toggle.gd" id="3_jscy8"]
+[ext_resource type="Texture2D" uid="uid://0yggp3fn6gql" path="res://assets/sprites/audio.png" id="3_yc10j"]
 [ext_resource type="TileSet" uid="uid://bwcu4d0i4ii6t" path="res://resources/tilesets/small_tileset.tres" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://da7iws7rn34ic" path="res://scenes/plunger.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bgaqkaaebb2t2" path="res://scenes/bumper.tscn" id="6_tefeu"]
@@ -24,6 +25,28 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
 bg_color = Color(0.227451, 0.266667, 0.4, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+atlas = ExtResource("3_yc10j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("3_yc10j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6deb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc10j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jscy8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_muem4"]
 b = Vector2(16, 1)
@@ -55,15 +78,30 @@ text = "03:00"
 horizontal_alignment = 2
 
 [node name="Hi Score" type="Label" parent="UI"]
-offset_left = 457.0
+offset_left = 453.00003
 offset_top = 24.0
-offset_right = 502.0
+offset_right = 499.0
 offset_bottom = 52.0
 scale = Vector2(3, 3)
 theme = ExtResource("2_a8y0u")
 text = "Hi Score:
 1000000"
 horizontal_alignment = 2
+
+[node name="AudioToggle" type="Button" parent="UI"]
+offset_left = 592.0
+offset_top = 24.0
+offset_right = 607.3333
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+focus_mode = 0
+theme = ExtResource("2_a8y0u")
+script = ExtResource("3_jscy8")
+
+[node name="AudioSheet" type="AnimatedSprite2D" parent="UI/AudioToggle"]
+position = Vector2(7.6666565, 8)
+scale = Vector2(0.6666667, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_y6deb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 offset_left = 453.0
@@ -216,5 +254,8 @@ stream = ExtResource("20_yc10j")
 autoplay = true
 script = ExtResource("20_gqmmt")
 
+[connection signal="button_down" from="UI/AudioToggle" to="UI/AudioToggle" method="_on_button_down"]
+[connection signal="mouse_entered" from="UI/AudioToggle" to="UI/AudioToggle" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI/AudioToggle" to="UI/AudioToggle" method="_on_mouse_exited"]
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]
 [connection signal="child_entered_tree" from="Shake_Layer" to="." method="_on_shake_layer_child_entered_tree"]
