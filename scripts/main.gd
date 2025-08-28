@@ -27,9 +27,9 @@ func _ready():
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
 	%TargetBank.connect("add_time", _add_time)
 	%TargetBank.connect("add_score_bonus", _modify_score)
-	%Target.connect
 	%Spinner.connect("spin_points", _modify_score)
 	%Spinner2.connect("spin_points", _modify_score)
+	%SpeedBoost.connect("modify_score", _modify_score)
 	_create_new_ball()
 
 
@@ -90,7 +90,6 @@ func _on_timer_timeout() -> void:
 	# Player loses the game
 	# print to catch potential game crash error. 
 	print("END GAME")
-	get_tree().quit()
 
 
 func format_time(seconds: int) -> String:
