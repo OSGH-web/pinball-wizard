@@ -90,7 +90,6 @@ func _on_timer_timeout() -> void:
 	# Player loses the game
 	# print to catch potential game crash error. 
 	print("END GAME")
-	get_tree().quit()
 
 
 func format_time(seconds: int) -> String:
