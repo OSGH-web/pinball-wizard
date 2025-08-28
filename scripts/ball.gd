@@ -55,6 +55,7 @@ func _on_body_entered(body: Node) -> void:
 			else:
 				body.target_is_hit.emit()
 
+
 func _physics_process(delta: float) -> void:
 	_update_animation_frame()
 
