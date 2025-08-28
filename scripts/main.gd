@@ -32,6 +32,34 @@ func _ready():
 	%SpeedBoost.connect("modify_score", _modify_score)
 	_create_new_ball()
 
+	%UI/HighScoreTable.connect("finished_entering_score", _reset_game)
+
+const RESET_DELAY = 2
+
+func _reset_game():
+	$UI/ResettingLabel.show()
+	countdown_time = 5
+	score = 0
+	multiplier = 1
+	var balls = $Shake_Layer/Balls
+	for ball in balls.get_children():
+		ball.queue_free()
+
+	_create_new_ball()
+
+	await get_tree().create_timer(RESET_DELAY).timeout
+
+	$UI/ResettingLabel.hide()
+
+	get_tree().paused = false
+	$Shake_Layer/Plunger.game_started = false
+	$Shake_Layer.show()
+	$UI/TimerLabel.text = format_time(countdown_time)
+	$UI/TimerLabel.show()
+	$"UI/Hi Score".show()
+	$UI/HBoxContainer.show()
+
+
 
 func _create_new_ball():
 	var ball = ball_scene.instantiate()
@@ -90,6 +118,15 @@ func _on_timer_timeout() -> void:
 	# Player loses the game
 	# print to catch potential game crash error. 
 	print("END GAME")
+	$Shake_Layer.hide()
+	$UI/TimerLabel.hide()
+	$"UI/Hi Score".hide()
+	$UI/HBoxContainer.hide()
+
+	get_tree().paused = true
+
+	$"UI/HighScoreTable".enter_high_score(score)
+	$UI/Timer.stop()
 
 
 func format_time(seconds: int) -> String:
