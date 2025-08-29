@@ -59,7 +59,18 @@ func _reset_game():
 	$"UI/Hi Score".show()
 	$UI/HBoxContainer.show()
 
+	# reset target bank
+	%TargetBank.reset_all_targets()
 
+	# reset rollover buttons
+	$Shake_Layer/TripleRolloverButtonGroup.reset_all_buttons()
+
+	# TODO: reset ball capture
+	$Shake_Layer/BallCapture.reset()
+	$Shake_Layer/BallCapture2.reset()
+	# TODO: reset UI elements
+	 # - reset score entry
+	 # - reset timer entry
 
 func _create_new_ball():
 	var ball = ball_scene.instantiate()

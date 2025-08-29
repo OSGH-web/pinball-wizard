@@ -79,3 +79,9 @@ func _on_timer_timeout() -> void:
 		release_ball()
 	elif state == BallCaptureState.INACTIVE:
 		state = BallCaptureState.ACTIVE
+
+
+# called between rounds
+func reset():
+	state = BallCaptureState.ACTIVE
+	lockedBall = null

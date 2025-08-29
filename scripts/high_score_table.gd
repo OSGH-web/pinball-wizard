@@ -152,17 +152,17 @@ func _input(event: InputEvent):
 	# if we are here that means the player has earned a new high score and needs to enter their name
 	var score = high_score_data.scores[new_high_score_idx]
 	
-	if Input.is_key_pressed(KEY_UP):
+	if event.is_action_pressed("ui_up"):
 		# increment the character at the player's cursor. 
 		character_idx += 1
 		var selected_character = CHARACTER_LIST[character_idx]
 		score.name[name_position] = selected_character
-	elif Input.is_key_pressed(KEY_DOWN):
+	elif event.is_action_pressed("lower_plunger"):
 		# decrement the character at the player's cursor
 		character_idx -= 1
 		var selected_character = CHARACTER_LIST[character_idx]
 		score.name[name_position] = selected_character
-	elif Input.is_key_pressed(KEY_RIGHT):
+	elif event.is_action_pressed("right_flipper"):
 		# move the player's cursor to the right
 		if name_position == 2:
 			reset()
@@ -170,7 +170,7 @@ func _input(event: InputEvent):
 			
 		name_position += 1
 		character_idx = CHARACTER_LIST.find(score.name[name_position])
-	elif Input.is_key_pressed(KEY_LEFT):
+	elif event.is_action_pressed("left_flipper"):
 		# move the player's cursor to the left
 		name_position -= 1
 		character_idx = CHARACTER_LIST.find(score.name[name_position])
