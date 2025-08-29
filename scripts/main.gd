@@ -1,13 +1,15 @@
 extends Node2D
 
 const NEW_BALL_POSITION = Vector2(436.0, 301.25)
+const SAVE_PATH = "user://high_score.tres"
 
 var timer: Timer
 # The amount of time the timer will start with in milliseconds
-var countdown_time :=  180
+var countdown_time :=  120
 var game_started := false
 var game_round = 0
 var score_goal = 0
+var high_score = 0
 var ball_scene = preload("res://scenes/ball.tscn")
 var damage_number_scene = preload("res://scenes/damage_number.tscn")
 var score := 0:
@@ -25,6 +27,8 @@ var multiplier = 1:
 			
 
 func _ready():
+	load_data()
+	%UI/Hi_Score.text = "Hi Score:\n" + str(high_score)
 	%UI/TimerLabel.text = format_time(countdown_time)
 	%Plunger.connect("game_started_signal", _on_game_started_signal)
 	%TargetBank.connect("add_time", _add_time)
@@ -49,6 +53,48 @@ func _process(_delta: float) -> void:
 	elif score < score_goal and %CloseGateTimer.is_stopped():
 		%CloseGateTimer.start()
 
+
+const RESET_DELAY = 2
+
+func _reset_game():
+	save()
+	$UI/ResettingLabel.show()
+	countdown_time = 5
+	score = 0
+	%Score.text = "0"
+	multiplier = 1
+	var balls = $Shake_Layer/Balls
+	for ball in balls.get_children():
+		ball.queue_free()
+
+	_create_new_ball()
+
+	await get_tree().create_timer(RESET_DELAY).timeout
+
+	$UI/ResettingLabel.hide()
+
+	get_tree().paused = false
+	$Shake_Layer/Plunger.game_started = false
+	$Shake_Layer.show()
+	countdown_time = 120
+	$UI/TimerLabel.text = format_time(countdown_time)
+	$UI/Timer.start()
+	$UI/TimerLabel.show()
+	$UI/Hi_Score.show()
+	$UI/HBoxContainer.show()
+
+	# reset target bank
+	%TargetBank.reset_all_targets()
+
+	# reset rollover buttons
+	$Shake_Layer/TripleRolloverButtonGroup.reset_all_buttons()
+
+	%BallCapture.state = BallCapture.BallCaptureState.INACTIVE
+	$Shake_Layer/BallCapture.reset()
+	$Shake_Layer/BallCapture2.reset()
+	# TODO: reset UI elements
+	 # - reset score entry
+	 # - reset timer entry
 
 func _create_new_ball():
 	var ball = ball_scene.instantiate()
@@ -109,6 +155,21 @@ func _start_countdown(duration: int):
 	game_started = true
 	
 	
+func _on_timer_timeout() -> void:
+	# Player loses the game
+	# print to catch potential game crash error. 
+	print("END GAME")
+	$Shake_Layer.hide()
+	$UI/TimerLabel.hide()
+	$"UI/Hi_Score".hide()
+	$UI/HBoxContainer.hide()
+
+	get_tree().paused = true
+
+	$UI/Timer.stop()
+	_reset_game()
+
+
 func format_time(seconds: int) -> String:
 	var minutes = seconds / 60
 	var secs = seconds % 60
@@ -119,13 +180,25 @@ func _on_shake_layer_child_entered_tree(node: Node) -> void:
 	if node is TripleRolloverButtonGroup:
 		node.connect("modify_multiplier", _modify_multiplier)
 		
-		
-func _on_timer_timeout() -> void:
-	# Player loses the game
-	# print to catch potential game crash error. 
-	print("END GAME")
 
 
 func _on_close_gate_timer_timeout() -> void:
 	%Gate.close_gate()
 	%BallCapture.state = BallCapture.BallCaptureState.INACTIVE
+	
+	
+func save():
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if score > high_score:
+		file.store_var(score)
+		$UI/Hi_Score.text = "Hi Score:\n" + str(score)
+		
+		
+func load_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		var attempt_high_score = file.get_var(score)
+		if attempt_high_score != null:
+			high_score = attempt_high_score
+	else:
+		high_score = 0
