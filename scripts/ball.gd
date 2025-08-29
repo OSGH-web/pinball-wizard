@@ -82,6 +82,10 @@ func _update_animation_frame():
 # helper, called during _physics_process
 func _debug_handle_mouse_input():
 	if debug_velocity_reset_requested:
+		# don't do anything if the player has clicked off of the board
+		if debug_initial_click_position.x > 456 || debug_initial_click_position.x < 197:
+			debug_velocity_reset_requested = false
+			return
 		linear_velocity = Vector2.ZERO
 		angular_velocity = 0
 

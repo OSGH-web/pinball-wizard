@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4x462fr74gba"]
+
+[ext_resource type="TileSet" uid="uid://dmrlnwwpwijaj" path="res://resources/tilesets/small_silver_tileset.tres" id="1_xfvdi"]
+[ext_resource type="Script" uid="uid://dqkn1m1sxq2c7" path="res://scripts/gate.gd" id="2_xwxio"]
+
+[node name="Gate" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_xfvdi")
+script = ExtResource("2_xwxio")
