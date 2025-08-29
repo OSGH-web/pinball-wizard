@@ -10,7 +10,7 @@ var game_round = 0
 var score_goal = 0
 var ball_scene = preload("res://scenes/ball.tscn")
 var damage_number_scene = preload("res://scenes/damage_number.tscn")
-var score := 0:
+var score := 16000:
 	set(new_score):
 		if new_score < 0:
 			score = 0

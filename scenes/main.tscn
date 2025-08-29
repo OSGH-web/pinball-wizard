@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bn68c8ajnoa4q"]
+[gd_scene load_steps=32 format=4 uid="uid://bn68c8ajnoa4q"]
 
 [ext_resource type="Script" uid="uid://bstyqnbqjcg4e" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bn88swkkd7ayb" path="res://scenes/flipper.tscn" id="2_0wfyh"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://du7gk8rwuex1n" path="res://scripts/background_music.gd" id="20_gqmmt"]
 [ext_resource type="AudioStream" uid="uid://dkgdadvhec5pm" path="res://assets/audio/aguas_de_marco_2.wav" id="20_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b4x462fr74gba" path="res://scenes/gate.tscn" id="22_y6deb"]
+[ext_resource type="PackedScene" uid="uid://duxd5mcl8fa76" path="res://scenes/multball_capture.tscn" id="25_og1vs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
 bg_color = Color(0.227451, 0.266667, 0.4, 1)
@@ -249,9 +250,6 @@ position = Vector2(212, 151)
 unique_name_in_owner = true
 position = Vector2(361, 44)
 
-[node name="BallCapture2" parent="Shake_Layer" instance=ExtResource("15_jbj1t")]
-position = Vector2(270, 129)
-
 [node name="BallCapture" parent="Shake_Layer" instance=ExtResource("15_jbj1t")]
 unique_name_in_owner = true
 position = Vector2(394, 46)
@@ -276,6 +274,9 @@ one_shot = true
 stream = ExtResource("20_yc10j")
 autoplay = true
 script = ExtResource("20_gqmmt")
+
+[node name="MultballCapture" parent="." instance=ExtResource("25_og1vs")]
+position = Vector2(270, 129)
 
 [connection signal="button_down" from="UI/AudioToggle" to="UI/AudioToggle" method="_on_button_down"]
 [connection signal="timeout" from="UI/Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://duxd5mcl8fa76"]
+
+[ext_resource type="PackedScene" uid="uid://hm3kxibi163s" path="res://scenes/ball_capture.tscn" id="1_faabe"]
+[ext_resource type="Script" uid="uid://dquy4klwdh15w" path="res://scripts/multball_capture.gd" id="2_uxu02"]
+[ext_resource type="Texture2D" uid="uid://dt55bvbp3pxwy" path="res://assets/sprites/ball_capture_multi.png" id="3_m2uu3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f3h2"]
+atlas = ExtResource("3_m2uu3")
+region = Rect2(0, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehisi"]
+atlas = ExtResource("3_m2uu3")
+region = Rect2(21, 0, 21, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_788ds"]
+atlas = ExtResource("3_m2uu3")
+region = Rect2(42, 0, 21, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlsfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f3h2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehisi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_788ds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MultballCapture" instance=ExtResource("1_faabe")]
+script = ExtResource("2_uxu02")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_jlsfd")
+frame = 0
