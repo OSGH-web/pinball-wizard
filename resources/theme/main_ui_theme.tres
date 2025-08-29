@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://dcnebljg3xc5w"]
 
 [ext_resource type="StyleBox" uid="uid://b8pdv6vrt8lxy" path="res://resources/theme/label-box.tres" id="1_8kdki"]
-[ext_resource type="FontFile" uid="uid://b86m1rdbbrrm7" path="res://assets/fonts/Beanstalk.ttf" id="1_ntc7u"]
+[ext_resource type="FontFile" uid="uid://c7v3yvfsc3f3y" path="res://assets/fonts/Beanstalk.ttf" id="1_ntc7u"]
 
 [resource]
 Button/styles/hover = ExtResource("1_8kdki")
@@ -9,5 +9,5 @@ Button/styles/normal = ExtResource("1_8kdki")
 Button/styles/pressed = ExtResource("1_8kdki")
 Label/constants/line_spacing = -3
 Label/fonts/font = ExtResource("1_ntc7u")
-RichTextLabel/styles/normal = ExtResource("1_8kdki")
 Label/styles/normal = ExtResource("1_8kdki")
+RichTextLabel/styles/normal = ExtResource("1_8kdki")
